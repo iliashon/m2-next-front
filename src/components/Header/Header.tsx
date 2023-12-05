@@ -29,10 +29,13 @@ export default function Header() {
                     EN
                 </button>
                 <div className="flex flex-col items-end">
-                    <a href="" className="text-gr-green text-xl">
+                    <a
+                        href="tel:+995574155989"
+                        className="text-gr-green text-xl"
+                    >
                         +995 <b>574-155-989</b>
                     </a>
-                    <a href="" className="text-xs">
+                    <a href="mailto:info@grassclean.ge" className="text-xs">
                         info<span className="text-gr-green">@</span>
                         grassclean.ge
                     </a>

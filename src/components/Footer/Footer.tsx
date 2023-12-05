@@ -29,7 +29,10 @@ export default function Footer() {
                 <div className="flex gap-32">
                     <ul className="flex flex-col gap-9 justify-center">
                         <li>
-                            <a href="" className="flex items-center gap-3">
+                            <a
+                                href="tel:+995574155989"
+                                className="flex items-center gap-3"
+                            >
                                 <Image src={phone} alt="Phone number" />
                                 <h5>
                                     +995 <b>574-155-989</b>
@@ -37,13 +40,20 @@ export default function Footer() {
                             </a>
                         </li>
                         <li>
-                            <a href="" className="flex items-center gap-3">
+                            <a
+                                href="mailto:info@grassclean.ge"
+                                className="flex items-center gap-3"
+                            >
                                 <Image src={mail} alt="Mail addres" />
                                 <h5>info@grassclean.ge</h5>
                             </a>
                         </li>
                         <li>
-                            <a href="" className="flex items-center gap-3">
+                            <a
+                                href="https://maps.app.goo.gl/kf398dUW979gJvKX8"
+                                className="flex items-center gap-3"
+                                target="blank"
+                            >
                                 <Image
                                     src={location}
                                     alt="Location on google map"
@@ -53,11 +63,21 @@ export default function Footer() {
                         </li>
                     </ul>
                     <ul className="flex flex-col gap-2 list-disc">
-                        <li>Household chemistry</li>
-                        <li>leaning products</li>
-                        <li>HoReCa</li>
-                        <li>DutyBox</li>
-                        <li>Food industry</li>
+                        <li>
+                            <a href="">Household chemistry</a>
+                        </li>
+                        <li>
+                            <a href="">Leaning products</a>
+                        </li>
+                        <li>
+                            <a href="">HoReCa</a>
+                        </li>
+                        <li>
+                            <a href="">DutyBox</a>
+                        </li>
+                        <li>
+                            <a href="">Food industry</a>
+                        </li>
                     </ul>
                 </div>
             </div>
