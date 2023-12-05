@@ -25,7 +25,9 @@ export default function Header() {
                 </div>
             </div>
             <div className="flex gap-12 font-lato">
-                <button className="font-light hover:font-medium">EN</button>
+                <button className="font-light hover:font-medium text-gray-400">
+                    EN
+                </button>
                 <div className="flex flex-col items-end">
                     <a href="" className="text-gr-green text-xl">
                         +995 <b>574-155-989</b>
@@ -41,7 +43,7 @@ export default function Header() {
                     </button>
                     <button className="flex items-center justify-center h-11 w-11 bg-gr-bg-gray rounded-full relative">
                         <Image src={cart} alt="Cart" />
-                        <span className="absolute -top-2 -right-2 w-5 h-5 bg-gr-green flex justify-center items-center rounded-full text-white text-xs">
+                        <span className="absolute -top-1 -right-1 w-5 h-5 bg-gr-green flex justify-center items-center rounded-full text-white text-xs">
                             0
                         </span>
                     </button>
