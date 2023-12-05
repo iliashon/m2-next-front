@@ -5,15 +5,17 @@ import Link from "next/link";
 import user from "@/assets/icons/user.png";
 import cart from "@/assets/icons/cart.png";
 
+// Import header logo
+import logo from "@/assets/images/logo-header.png";
+
 export default function Header() {
     return (
-        <div className="container mx-auto px-4 flex justify-between items-center h-24">
+        <header className="container mx-auto px-4 flex justify-between items-center h-24">
             <div className="flex gap-12">
                 <div>
-                    <img
-                        src="https://grass.loc/media/logo/default/image_28.png"
-                        alt="Logo"
-                    />
+                    <a href="">
+                        <Image src={logo} alt="Logo" />
+                    </a>
                 </div>
                 <div className="flex gap-6 items-center font-monts">
                     <Link href="/">About us</Link>
@@ -45,6 +47,6 @@ export default function Header() {
                     </button>
                 </div>
             </div>
-        </div>
+        </header>
     );
 }
