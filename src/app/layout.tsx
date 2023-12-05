@@ -31,7 +31,9 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${montserrat.variable} ${lato.variable}`}>
                 <Header />
-                <ApolloWrapper>{children}</ApolloWrapper>
+                <ApolloWrapper>
+                    <main>{children}</main>
+                </ApolloWrapper>
                 <Footer />
             </body>
         </html>
