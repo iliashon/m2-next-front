@@ -1,5 +1,6 @@
 "use client";
 
+import ProductCard from "@/components/ProductCard/ProductCard";
 import Slider from "@/components/Slider/Slider";
 
 const style = {
@@ -31,6 +32,17 @@ export default function Home() {
                     <div className={`col-span-3 ${style.categoryBlock}`}>
                         Duty Box
                     </div>
+                </div>
+            </section>
+            <section className="bg-gray-200">
+                <h2 className="text-center font-monts font-bold	text-3xl py-4">
+                    Recommended
+                </h2>
+                <div className="container mx-auto p-4 flex gap-8 flex-wrap">
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
                 </div>
             </section>
         </div>
