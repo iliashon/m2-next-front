@@ -34,7 +34,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="bg-gray-200">
+            <section className="bg-gr-bg-gray">
                 <h2 className="text-center font-monts font-bold	text-3xl py-4">
                     Recommended
                 </h2>

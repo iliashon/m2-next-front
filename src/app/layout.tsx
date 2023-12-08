@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Montserrat, Lato } from "next/font/google";
 import { ApolloWrapper } from "@/app/ApolloWrapper";
 import "./globals.css";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Layout/Header/Header";
+import Footer from "@/components/Layout/Footer/Footer";
 
 export const metadata: Metadata = {
     title: "Create Next App",

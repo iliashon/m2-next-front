@@ -4,7 +4,6 @@ import Image from "next/image";
 import productImg from "@/assets/images/product.jpeg";
 
 // Import icon cart
-import cart from "@/assets/icons/cart-white.png";
 import check from "@/assets/icons/check.svg";
 
 export default function ProductCard() {
