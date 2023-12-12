@@ -8,11 +8,7 @@ interface ICategory {
 
 export interface ICategories {
     categories: {
-        items: [
-            {
-                children: ICategory[];
-            }
-        ];
+        items: ICategory[];
     };
 }
 
@@ -20,13 +16,11 @@ export async function GetCategories() {
     const { data }: ApolloQueryResult<ICategories> = await client.query({
         query: gql`
             query GetCategories {
-                categories {
+                categories(filters: { parent_id: { in: "47" } }) {
                     items {
-                        children {
-                            name
-                            url_key
-                            image
-                        }
+                        name
+                        url_key
+                        image
                     }
                 }
             }

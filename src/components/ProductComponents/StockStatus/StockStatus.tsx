@@ -3,7 +3,7 @@ import Image from "next/image";
 // Import Icons
 import check from "@/assets/icons/check.svg";
 import cross from "@/assets/icons/cross.svg";
-import { TStockStatus } from "@/app/[product]/page";
+import type { TStockStatus } from "@/app/[product]/page";
 
 export default function StockStatus({
     stock_status,

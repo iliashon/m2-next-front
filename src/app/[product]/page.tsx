@@ -18,7 +18,9 @@ export default async function Product({
 
     return (
         <section className="bg-gr-bg-gray pb-24">
-            <Breadcrump />
+            <div className="container mx-auto p-4 font-lato">
+                <Breadcrump />
+            </div>
             <div className="container mx-auto px-4 py-5 flex gap-10 font-monts">
                 <div className="w-2/5 flex justify-center items-center h-28rem bg-white rounded-xl">
                     <Image src={image.url} alt="" width={300} height={300} />

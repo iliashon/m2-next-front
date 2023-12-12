@@ -38,7 +38,7 @@ export default function ProductCard(props: PropsIRecProduct) {
                 <span className="text-xs text-gray-400">
                     SKU {props.data.sku}
                 </span>
-                <a href="/product" className="text-base">
+                <a href={`/${props.data.url_key}`} className="text-base">
                     <b>{props.data.name}</b>
                 </a>
                 <div

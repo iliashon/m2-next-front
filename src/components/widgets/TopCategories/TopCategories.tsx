@@ -17,34 +17,34 @@ export default async function TopCategories() {
             </h2>
             <div className="container mx-auto p-4 grid grid-cols-6 grid-rows-2 gap-4">
                 <Link
-                    href={`/catalog/${data.categories.items[0].children[0].url_key}`}
+                    href={`/catalog/${data.categories.items[0].url_key}`}
                     className={`col-span-2 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].children[0].name}
+                    {data.categories.items[0].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].children[1].url_key}`}
+                    href={`/catalog/${data.categories.items[0].url_key}`}
                     className={`col-span-2 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].children[1].name}
+                    {data.categories.items[0].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].children[2].url_key}`}
+                    href={`/catalog/${data.categories.items[0].url_key}`}
                     className={`col-span-2 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].children[2].name}
+                    {data.categories.items[0].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].children[3].url_key}`}
+                    href={`/catalog/${data.categories.items[0].url_key}`}
                     className={`col-span-3 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].children[3].name}
+                    {data.categories.items[0].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].children[4].url_key}`}
+                    href={`/catalog/${data.categories.items[0].url_key}`}
                     className={`col-span-3 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].children[4].name}
+                    {data.categories.items[0].name}
                 </Link>
             </div>
         </section>
