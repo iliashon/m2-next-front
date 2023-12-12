@@ -1,4 +1,5 @@
-import { gql } from "@apollo/client";
+import client from "@/apollo-client";
+import { ApolloQueryResult, gql } from "@apollo/client";
 
 interface ICategory {
     name: string;
@@ -15,16 +16,22 @@ export interface ICategories {
     };
 }
 
-export const GET_CATEGORIES = gql`
-    query GetCategories {
-        categories {
-            items {
-                children {
-                    name
-                    url_key
-                    image
+export async function GetCategories() {
+    const { data }: ApolloQueryResult<ICategories> = await client.query({
+        query: gql`
+            query GetCategories {
+                categories {
+                    items {
+                        children {
+                            name
+                            url_key
+                            image
+                        }
+                    }
                 }
             }
-        }
-    }
-`;
+        `,
+        fetchPolicy: "no-cache",
+    });
+    return data;
+}

@@ -1,8 +1,5 @@
 import Image from "next/image";
 
-// Import Product photo
-import productImg from "@/assets/images/product.jpeg";
-
 // Import icon cart
 import check from "@/assets/icons/check.svg";
 import cross from "@/assets/icons/cross.svg";
@@ -13,13 +10,7 @@ interface PropsIRecProduct {
     data: IRecomendedProduct;
 }
 
-// Loader src Image
-const loaderProp = ({ src }: any) => {
-    return src;
-};
-
 export default function ProductCard(props: PropsIRecProduct) {
-    console.log(props.data.image.url);
     return (
         <div className="h-28rem w-72 bg-white rounded-xl box-border p-4 font-lato flex flex-col justify-between relative">
             <a
@@ -28,7 +19,6 @@ export default function ProductCard(props: PropsIRecProduct) {
             >
                 <Image
                     src={props.data.image.url}
-                    loader={loaderProp}
                     alt=""
                     className="h-full object-contain"
                     width={200}

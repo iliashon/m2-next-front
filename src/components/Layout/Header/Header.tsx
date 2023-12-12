@@ -18,10 +18,8 @@ export default function Header() {
                     </a>
                 </div>
                 <div className="flex gap-6 items-center font-monts">
-                    <Link href="/">About us</Link>
-                    <Link href="/">Partners</Link>
-                    <Link href="/">Categories</Link>
-                    <Link href="/">Catalog</Link>
+                    <Link href="/about-us">About us</Link>
+                    <Link href="/catalog">Catalog</Link>
                 </div>
             </div>
             <div className="flex gap-12 font-lato">

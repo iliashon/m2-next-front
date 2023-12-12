@@ -1,13 +1,11 @@
-import { gql } from "@apollo/client";
+import client from "@/apollo-client";
+import { ApolloQueryResult, gql } from "@apollo/client";
 
 export interface IRecomendedProduct {
     name: string;
     url_key: string;
     image: {
         url: string;
-    };
-    description: {
-        html: string;
     };
     short_description: {
         html: string;
@@ -30,33 +28,38 @@ export interface IRecomendedProducts {
     };
 }
 
-export const GET_RECOMENDED_PRODUCTS = gql`
-    query {
-        products(filter: { category_id: { in: "46" } }) {
-            items {
-                name
-                url_key
-                image {
-                    url
-                }
-                description {
-                    html
-                }
-                short_description {
-                    html
-                }
-                sku
-                stock_status
-                price_range {
-                    maximum_price {
-                        regular_price {
-                            value
-                            currency
+export async function GetRecommendedProduct() {
+    const { data }: ApolloQueryResult<IRecomendedProducts> = await client.query(
+        {
+            query: gql`
+                query GetRecommendedProduct {
+                    products(filter: { category_id: { in: "41" } }) {
+                        items {
+                            name
+                            url_key
+                            image {
+                                url
+                            }
+                            short_description {
+                                html
+                            }
+                            sku
+                            stock_status
+                            price_range {
+                                maximum_price {
+                                    regular_price {
+                                        value
+                                        currency
+                                    }
+                                }
+                            }
+                            special_price
                         }
                     }
                 }
-                special_price
-            }
+            `,
+            fetchPolicy: "no-cache",
         }
-    }
-`;
+    );
+    return data;
+}

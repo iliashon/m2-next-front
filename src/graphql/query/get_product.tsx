@@ -1,4 +1,4 @@
-import { client } from "@/app/ApolloWrapper";
+import client from "@/apollo-client";
 import { ApolloQueryResult, gql } from "@apollo/client";
 
 export async function getProduct(url_key: string) {
