@@ -5,38 +5,92 @@ import productImg from "@/assets/images/product.jpeg";
 
 // Import icon cart
 import check from "@/assets/icons/check.svg";
+import cross from "@/assets/icons/cross.svg";
+import { IRecomendedProduct } from "@/graphql/query/get_recomended_products";
 
-export default function ProductCard() {
+// Type props
+interface PropsIRecProduct {
+    data: IRecomendedProduct;
+}
+
+// Loader src Image
+const loaderProp = ({ src }: any) => {
+    return src;
+};
+
+export default function ProductCard(props: PropsIRecProduct) {
+    console.log(props.data.image.url);
     return (
         <div className="h-28rem w-72 bg-white rounded-xl box-border p-4 font-lato flex flex-col justify-between relative">
-            <a href="" className="h-2/4 flex justify-center">
+            <a
+                href={`/${props.data.url_key}`}
+                className="h-2/4 flex justify-center"
+            >
                 <Image
-                    src={productImg}
+                    src={props.data.image.url}
+                    loader={loaderProp}
                     alt=""
                     className="h-full object-contain"
+                    width={200}
+                    height={200}
                 />
             </a>
             <div className="flex flex-col -mt-4">
-                <s className="text-xs text-gray-400">17.48&#8382;</s>
-                <span className="text-red-500 text-2xl">
-                    <b>12.50&#8382;</b>
+                <span className="text-gr-green text-2xl">
+                    <b>
+                        {
+                            props.data.price_range.maximum_price.regular_price
+                                .value
+                        }
+                        &#8382;
+                    </b>
                 </span>
-                <span className="text-xs text-gray-400">Art. 125440</span>
-                <a href="" className="text-base">
-                    <b>А4 furniture polishing agent</b>
+                <span className="text-xs text-gray-400">
+                    SKU {props.data.sku}
+                </span>
+                <a href="/product" className="text-base">
+                    <b>{props.data.name}</b>
                 </a>
-                <p className="text-xs text-gray-400">
-                    Polishing agent for restoring and maintaining the natural
-                    appearance of wooden surfaces. Cleans...
-                </p>
+                <div
+                    className="text-xs text-gray-400 h-8 overflow-hidden"
+                    dangerouslySetInnerHTML={{
+                        __html: props.data.short_description.html,
+                    }}
+                ></div>
             </div>
             <div className="flex flex-col gap-2">
-                <button className="bg-gr-green w-full h-9 rounded-md text-white font-monts">
+                <button
+                    className={`bg-gr-green w-full h-9 rounded-md text-white font-monts ${
+                        props.data.stock_status === "IN_STOCK"
+                            ? "opacity-100"
+                            : "opacity-50"
+                    }`}
+                    disabled={
+                        props.data.stock_status === "IN_STOCK" ? false : true
+                    }
+                >
                     Add to cart
                 </button>
                 <div className="flex gap-1">
-                    <p className="text-green-500">in stock</p>
-                    <Image src={check} alt="" />
+                    <p
+                        className={
+                            props.data.stock_status === "IN_STOCK"
+                                ? "text-green-500"
+                                : "text-red-400"
+                        }
+                    >
+                        {props.data.stock_status === "IN_STOCK"
+                            ? "in stock"
+                            : "out of stock"}
+                    </p>
+                    <Image
+                        src={
+                            props.data.stock_status === "IN_STOCK"
+                                ? check
+                                : cross
+                        }
+                        alt="Icons"
+                    />
                 </div>
             </div>
             <div className="absolute text-xs top-3 right-3 flex gap-1">

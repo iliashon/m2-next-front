@@ -13,7 +13,7 @@ export default function Header() {
         <header className="container mx-auto px-4 flex justify-between items-center h-24">
             <div className="flex gap-12">
                 <div>
-                    <a href="">
+                    <a href="/">
                         <Image src={logo} alt="Logo" />
                     </a>
                 </div>
@@ -44,12 +44,15 @@ export default function Header() {
                     <button className="flex items-center justify-center h-11 w-11 bg-gr-bg-gray rounded-full">
                         <Image src={user} alt="Cabinet" />
                     </button>
-                    <button className="flex items-center justify-center h-11 w-11 bg-gr-bg-gray rounded-full relative">
+                    <a
+                        href="/cart"
+                        className="flex items-center justify-center h-11 w-11 bg-gr-bg-gray rounded-full relative"
+                    >
                         <Image src={cart} alt="Cart" />
                         <span className="absolute -top-1 -right-1 w-5 h-5 bg-gr-green flex justify-center items-center rounded-full text-white text-xs">
                             0
                         </span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </header>

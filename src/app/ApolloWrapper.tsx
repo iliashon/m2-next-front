@@ -1,6 +1,11 @@
 "use client";
 
-import { ApolloLink, HttpLink } from "@apollo/client";
+import {
+    ApolloClient,
+    ApolloLink,
+    HttpLink,
+    InMemoryCache,
+} from "@apollo/client";
 import {
     ApolloNextAppProvider,
     NextSSRInMemoryCache,
@@ -8,7 +13,8 @@ import {
     SSRMultipartLink,
 } from "@apollo/experimental-nextjs-app-support/ssr";
 
-const BASE_MAGENTO_GRAPHQL_ENDPOIN = "https://grass.loc/graphql";
+const BASE_MAGENTO_GRAPHQL_ENDPOIN =
+    "https://ce246-aliakseitupalski-php81.neklodev.com/graphql";
 
 function makeClient() {
     const httpLink = new HttpLink({

@@ -1,7 +1,10 @@
 "use client";
 
-import ProductCard from "@/components/ProductCard/ProductCard";
+import RecomendedProducts from "@/components/widgets/RecomendedProducts/RecomendedProducts";
 import Slider from "@/components/Slider/Slider";
+import { GET_CATEGORIES, ICategories } from "@/graphql/query/get_categories";
+import { useQuery } from "@apollo/client";
+import Link from "next/link";
 
 const style = {
     categoryBlock:
@@ -9,42 +12,51 @@ const style = {
 };
 
 export default function Home() {
+    const { loading, data, error } = useQuery<ICategories>(GET_CATEGORIES);
+
     return (
         <div>
             <Slider />
-            <section>
-                <h2 className="text-center font-monts font-bold	text-3xl py-4">
-                    Popular Categories
-                </h2>
-                <div className="container mx-auto p-4 grid grid-cols-6 grid-rows-2 gap-4">
-                    <div className={`col-span-2 ${style.categoryBlock}`}>
-                        Household chemicals
+            {data && (
+                <section>
+                    <h2 className="text-center font-monts font-bold	text-3xl py-4">
+                        Categories
+                    </h2>
+                    <div className="container mx-auto p-4 grid grid-cols-6 grid-rows-2 gap-4">
+                        <Link
+                            href={`/catalog/${data.categories.items[0].children[0].url_key}`}
+                            className={`col-span-2 ${style.categoryBlock}`}
+                        >
+                            {data.categories.items[0].children[0].name}
+                        </Link>
+                        <Link
+                            href={`/catalog/${data.categories.items[0].children[1].url_key}`}
+                            className={`col-span-2 ${style.categoryBlock}`}
+                        >
+                            {data.categories.items[0].children[1].name}
+                        </Link>
+                        <Link
+                            href={`/catalog/${data.categories.items[0].children[2].url_key}`}
+                            className={`col-span-2 ${style.categoryBlock}`}
+                        >
+                            {data.categories.items[0].children[2].name}
+                        </Link>
+                        <Link
+                            href={`/catalog/${data.categories.items[0].children[3].url_key}`}
+                            className={`col-span-3 ${style.categoryBlock}`}
+                        >
+                            {data.categories.items[0].children[3].name}
+                        </Link>
+                        <Link
+                            href={`/catalog/${data.categories.items[0].children[4].url_key}`}
+                            className={`col-span-3 ${style.categoryBlock}`}
+                        >
+                            {data.categories.items[0].children[4].name}
+                        </Link>
                     </div>
-                    <div className={`col-span-2 ${style.categoryBlock}`}>
-                        HoReCa
-                    </div>
-                    <div className={`col-span-2 ${style.categoryBlock}`}>
-                        Cleaning
-                    </div>
-                    <div className={`col-span-3 ${style.categoryBlock}`}>
-                        Food industry
-                    </div>
-                    <div className={`col-span-3 ${style.categoryBlock}`}>
-                        Duty Box
-                    </div>
-                </div>
-            </section>
-            <section className="bg-gr-bg-gray">
-                <h2 className="text-center font-monts font-bold	text-3xl py-4">
-                    Recommended
-                </h2>
-                <div className="container mx-auto p-4 flex gap-8 flex-wrap">
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                </div>
-            </section>
+                </section>
+            )}
+            <RecomendedProducts />
         </div>
     );
 }

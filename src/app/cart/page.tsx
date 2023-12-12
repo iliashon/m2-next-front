@@ -4,7 +4,7 @@ const style = {
     baseFlex: "flex justify-between",
 };
 
-export default function page() {
+export default function Cart() {
     return (
         <section className="bg-gr-bg-gray">
             <div className="container mx-auto p-4 flex gap-8">
