@@ -1,6 +1,6 @@
 "use client";
 
-import { TStockStatus } from "@/app/[product]/page";
+import { TStockStatus } from "@/graphql/query/get_product";
 
 export default function AddToCartButton({
     stock_status,
