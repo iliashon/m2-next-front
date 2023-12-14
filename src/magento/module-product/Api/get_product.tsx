@@ -1,10 +1,11 @@
 import client from "@/apollo-client";
 import { ApolloQueryResult, gql } from "@apollo/client";
+import { SimpleProduct } from "../Types/TSimpleProduct";
 
-export async function getProduct(url_key: string) {
+export async function getSimpleProduct(url_key: string) {
     const { data }: ApolloQueryResult<SimpleProduct> = await client.query({
         query: gql`
-            query GetProduct($url_key: [String]) {
+            query GetSimpleProduct($url_key: [String]) {
                 products(filter: { url_key: { in: $url_key } }) {
                     items {
                         name
@@ -36,32 +37,3 @@ export async function getProduct(url_key: string) {
     });
     return data;
 }
-
-type SimpleProduct = {
-    products: {
-        items: [
-            {
-                name: string;
-                description: {
-                    html: string;
-                };
-                url_key: string;
-                image: {
-                    url: string;
-                };
-                sku: string;
-                stock_status: TStockStatus;
-                price_range: {
-                    maximum_price: {
-                        regular_price: {
-                            value: number;
-                            currency: string;
-                        };
-                    };
-                };
-            }
-        ];
-    };
-};
-
-export type TStockStatus = "IN_STOCK" | "OUT_OF_STOCK";

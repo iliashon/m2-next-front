@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "../../ProductCard/ProductCard";
+import ProductCard from "../../Catalog/ProductCard/ProductCard";
 import { GetRecommendedProduct } from "@/graphql/query/get_recomended_products";
 
 export default async function RecomendedProducts() {
