@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-p {
-    text-overflow: ellipsis;
+/* Don't responsive design */
+.width-limit {
+    display: none;
+}
+
+@media screen and (max-width: 1050px) {
+    .width-limit {
+        display: block;
+    }
+    main,
+    footer,
+    header {
+        display: none !important;
+    }
 }

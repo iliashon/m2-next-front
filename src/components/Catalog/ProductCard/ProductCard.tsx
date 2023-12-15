@@ -12,7 +12,7 @@ interface PropsIRecProduct {
 
 export default function ProductCard(props: PropsIRecProduct) {
     return (
-        <div className="h-28rem w-72 bg-white rounded-xl box-border p-4 font-lato flex flex-col justify-between relative">
+        <div className="h-96 w-72 bg-white rounded-xl box-border p-4 font-lato flex flex-col justify-between relative">
             <a
                 href={`/${props.data.url_key}`}
                 className="h-2/4 flex justify-center"
@@ -32,7 +32,7 @@ export default function ProductCard(props: PropsIRecProduct) {
                             props.data.price_range.maximum_price.regular_price
                                 .value
                         }
-                        &#8382;
+                        $
                     </b>
                 </span>
                 <span className="text-xs text-gray-400">
@@ -41,12 +41,6 @@ export default function ProductCard(props: PropsIRecProduct) {
                 <a href={`/${props.data.url_key}`} className="text-base">
                     <b>{props.data.name}</b>
                 </a>
-                <div
-                    className="text-xs text-gray-400 h-8 overflow-hidden"
-                    dangerouslySetInnerHTML={{
-                        __html: props.data.short_description.html,
-                    }}
-                ></div>
             </div>
             <div className="flex flex-col gap-2">
                 <button

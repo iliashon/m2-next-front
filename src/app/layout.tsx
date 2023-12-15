@@ -4,6 +4,8 @@ import { ApolloWrapper } from "@/app/ApolloWrapper";
 import "./globals.css";
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
+import Image from "next/image";
+import logo from "@/assets/images/logo-header.png";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -35,6 +37,13 @@ export default function RootLayout({
                     <main>{children}</main>
                 </ApolloWrapper>
                 <Footer />
+                <div className="width-limit">
+                    <Image src={logo} alt="" className="m-auto mt-12" />
+                    <h1 className="text-center text-2xl mt-5 text-gr-green font-lato w-3/4 m-auto font-semibold">
+                        We apologize the site is not responsive, the minimum
+                        viewing width is 1050 pixels
+                    </h1>
+                </div>
             </body>
         </html>
     );

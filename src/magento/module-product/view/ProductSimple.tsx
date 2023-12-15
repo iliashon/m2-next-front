@@ -44,8 +44,7 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
                     <div className="flex flex-col">
                         <span className="text-3xl font-lato text-gr-green">
                             <b>
-                                {price_range.maximum_price.regular_price.value}
-                                &#8382;
+                                {price_range.maximum_price.regular_price.value}$
                             </b>
                         </span>
                     </div>
