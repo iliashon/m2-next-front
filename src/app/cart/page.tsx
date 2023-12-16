@@ -1,18 +1,44 @@
+"use client";
+
 import ProductItem from "@/components/Checkout/ProductItem/ProductItem";
+import { TProductsCart } from "@/magento/module-product/Types/TCart";
+import { it } from "node:test";
+import { useEffect, useState } from "react";
 
 const style = {
     baseFlex: "flex justify-between",
 };
 
 export default function Cart() {
+    const [cart, setCart] = useState<TProductsCart>();
+
+    useEffect(() => {
+        setCart(JSON.parse(localStorage.getItem("cart") || ""));
+    }, []);
+
+    console.log(cart?.total_quantity);
+
     return (
         <section className="bg-gr-bg-gray">
             <div className="container mx-auto p-4 flex gap-8">
                 <div className="w-8/12 py-5 flex flex-col gap-4">
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
+                    {cart
+                        ? cart.items.map((item) => {
+                              return (
+                                  <ProductItem
+                                      name={item.product.name}
+                                      sku={item.product.sku}
+                                      quantity={item.quantity}
+                                      image={item.product.image.url}
+                                      price={
+                                          item.product.price_range.maximum_price
+                                              .regular_price.value
+                                      }
+                                      key={item.product.sku}
+                                  />
+                              );
+                          })
+                        : "Loading..."}
                 </div>
                 <div className="w-4/12 font-monts py-5">
                     <h2 className="text-2xl font-semibold text-center">
