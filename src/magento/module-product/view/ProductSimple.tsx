@@ -1,16 +1,15 @@
 //
 // Import graphql query
 // ----------------------------
-import { getSimpleProduct } from "../Api/get_product";
+import { getSimpleProduct } from "../Api/get-product";
 
 //
 // Import components
 // -----------------------------
 import Image from "next/image";
 import StockStatus from "@/magento/module-product/components/StockStatus/StockStatus";
-import QuantityChange from "@/magento/module-product/components/QuantityChange/QuantityChange";
-import AddToCartButton from "@/magento/module-product/components/AddToCartButton/AddToCartButton";
 import Breadcrump from "@/components/Breadcrump/Breadcrump";
+import AddToCartBox from "../components/AddToCartBox/AddToCartBox";
 
 export default async function ProductSimple({ url_key }: { url_key: string }) {
     const { name, description, image, sku, stock_status, price_range } = (
@@ -49,8 +48,15 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
                         </span>
                     </div>
                     <div className="flex gap-6">
-                        <QuantityChange />
-                        <AddToCartButton stock_status={stock_status} />
+                        <AddToCartBox
+                            productInfo={{
+                                name,
+                                image: image.url,
+                                sku,
+                                price: price_range.maximum_price.regular_price
+                                    .value,
+                            }}
+                        />
                     </div>
                 </div>
             </div>
