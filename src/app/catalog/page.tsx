@@ -8,8 +8,8 @@ import search from "@/assets/icons/uil_search.svg";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CATALOG_PRODUCTS } from "@/graphql/query/get_catalog_products";
-import ProductCard from "@/components/Catalog/ProductCard/ProductCard";
 import PriceFilter from "@/components/Catalog/PriceFilter/PriceFilter";
+import ProductCard from "@/magento/module-catalog/view/ProductCard";
 
 export default function Catalog() {
     const [price, setPrice] = useState([135, 1256]);

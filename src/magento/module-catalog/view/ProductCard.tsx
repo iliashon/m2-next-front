@@ -4,6 +4,8 @@ import Image from "next/image";
 import check from "@/assets/icons/check.svg";
 import cross from "@/assets/icons/cross.svg";
 import { IRecomendedProduct } from "@/graphql/query/get_recomended_products";
+import AddToCartButton from "../components/AddToCartButton";
+import StockStatus from "../components/StockStatus";
 
 // Type props
 interface PropsIRecProduct {
@@ -43,39 +45,11 @@ export default function ProductCard(props: PropsIRecProduct) {
                 </a>
             </div>
             <div className="flex flex-col gap-2">
-                <button
-                    className={`bg-gr-green w-full h-9 rounded-md text-white font-monts ${
-                        props.data.stock_status === "IN_STOCK"
-                            ? "opacity-100"
-                            : "opacity-50"
-                    }`}
-                    disabled={
-                        props.data.stock_status === "IN_STOCK" ? false : true
-                    }
-                >
-                    Add to cart
-                </button>
-                <div className="flex gap-1">
-                    <p
-                        className={
-                            props.data.stock_status === "IN_STOCK"
-                                ? "text-green-500"
-                                : "text-red-400"
-                        }
-                    >
-                        {props.data.stock_status === "IN_STOCK"
-                            ? "in stock"
-                            : "out of stock"}
-                    </p>
-                    <Image
-                        src={
-                            props.data.stock_status === "IN_STOCK"
-                                ? check
-                                : cross
-                        }
-                        alt="Icons"
-                    />
-                </div>
+                <AddToCartButton
+                    stock_status={props.data.stock_status}
+                    sku={props.data.sku}
+                />
+                <StockStatus stock_status={props.data.stock_status} />
             </div>
             <div className="absolute text-xs top-3 right-3 flex gap-1">
                 <span className="bg-red-400 px-2 py-1 rounded-lg text-white">
