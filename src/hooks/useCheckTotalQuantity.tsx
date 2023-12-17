@@ -6,10 +6,12 @@ export default function useCheckTotalQuantity() {
 
     useEffect(() => {
         const getQuantity = () => {
-            const quantity = JSON.parse(
-                localStorage.getItem("cart") || ""
-            ) as TProductsCart;
-            setQuantity(quantity.total_quantity);
+            if (localStorage.getItem("cart")) {
+                const quantity = JSON.parse(
+                    localStorage.getItem("cart") || ""
+                ) as TProductsCart;
+                setQuantity(quantity.total_quantity);
+            }
         };
 
         window.addEventListener("storage", () => getQuantity());
