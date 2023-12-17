@@ -27,8 +27,6 @@ export default function Catalog() {
 
     const { loading, data, error } = useQuery(GET_CATALOG_PRODUCTS);
 
-    console.log(data);
-
     return (
         <>
             <section className="">

@@ -1,24 +1,19 @@
 import client from "@/apollo-client";
+import {
+    TAddToCartSimpleProduct,
+    TDeleteProductFromCart,
+} from "@/magento/module-product/Types/TCart";
 import { FetchResult, gql } from "@apollo/client";
-import { TAddToCartSimpleProduct } from "../Types/TCart";
 
-export async function addSimpleProductToCart(
-    sku: string,
-    quantity: number,
+export async function deleteProductFromCart(
+    cartItemUid: string,
     cartId: string
 ) {
-    const { data }: FetchResult<TAddToCartSimpleProduct> = await client.mutate({
+    const { data }: FetchResult<TDeleteProductFromCart> = await client.mutate({
         mutation: gql`
-            mutation AddToCart(
-                $sku: String!
-                $quantity: Float!
-                $cartId: String!
-            ) {
-                addSimpleProductsToCart(
-                    input: {
-                        cart_items: { data: { sku: $sku, quantity: $quantity } }
-                        cart_id: $cartId
-                    }
+            mutation DeleteProductFromCart($cartItemUid: ID, $cartId: String!) {
+                removeItemFromCart(
+                    input: { cart_id: $cartId, cart_item_uid: $cartItemUid }
                 ) {
                     cart {
                         id
@@ -65,8 +60,7 @@ export async function addSimpleProductToCart(
             }
         `,
         variables: {
-            sku,
-            quantity,
+            cartItemUid,
             cartId,
         },
     });

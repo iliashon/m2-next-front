@@ -1,10 +1,9 @@
 import Image from "next/image";
 
-// Import product image
-import productImage from "@/assets/images/product.jpeg";
-
 // Import icons
 import trash from "@/assets/icons/heroiconsTrash.svg";
+import useDeleteProductFromCart from "../../hooks/useDeleteProductFromCart";
+import { ClipLoader } from "react-spinners";
 
 const loaderProp = ({ src }: { src: string }) => {
     return src;
@@ -16,13 +15,21 @@ export default function ProductItem({
     name,
     quantity,
     sku,
+    uid,
 }: {
     image: string;
     price: number;
     name: string;
     quantity: number;
     sku: string;
+    uid: string;
 }) {
+    const { loading, deleteProduct } = useDeleteProductFromCart();
+
+    const deleteProductHandle = () => {
+        deleteProduct(uid);
+    };
+
     return (
         <div className="flex justify-between max-h-36 bg-white rounded-xl box-border py-4 px-8 font-lato">
             <div className="flex gap-5">
@@ -56,7 +63,7 @@ export default function ProductItem({
                     <button className="w-9 h-9 rounded-md bg-gray-300">
                         -
                     </button>
-                    <span className="text-xl font-semibold">2</span>
+                    <span className="text-xl font-semibold">{quantity}</span>
                     <button className="w-9 h-9 rounded-md bg-gray-300">
                         +
                     </button>
@@ -69,8 +76,15 @@ export default function ProductItem({
                         {quantity} piece
                     </span>
                 </div>
-                <button className="border border-red-500 p-2 rounded-lg bg-red-100">
-                    <Image src={trash} alt="" />
+                <button
+                    onClick={deleteProductHandle}
+                    className="border w-10 h-10 flex justify-center items-center border-red-500 p-2 rounded-lg bg-red-100"
+                >
+                    {loading ? (
+                        <ClipLoader color="white" size={20} />
+                    ) : (
+                        <Image src={trash} alt="" />
+                    )}
                 </button>
             </div>
         </div>

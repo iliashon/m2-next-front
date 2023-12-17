@@ -23,8 +23,6 @@ export default function useAddToCartSimpleProduct() {
                 cartId
             )) as TAddToCartSimpleProduct;
 
-            console.log(data);
-
             localStorage.setItem(
                 CART_KEY_STORAGE,
                 JSON.stringify(data.addSimpleProductsToCart.cart)
