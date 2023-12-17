@@ -16,6 +16,7 @@ export default function ProductItem({
     quantity,
     sku,
     uid,
+    url_key,
 }: {
     image: string;
     price: number;
@@ -23,6 +24,7 @@ export default function ProductItem({
     quantity: number;
     sku: string;
     uid: string;
+    url_key: string;
 }) {
     const { loading, deleteProduct } = useDeleteProductFromCart();
 
@@ -34,7 +36,7 @@ export default function ProductItem({
         <div className="flex justify-between max-h-36 bg-white rounded-xl box-border py-4 px-8 font-lato">
             <div className="flex gap-5">
                 <a
-                    href=""
+                    href={`/${url_key}`}
                     className="w-16 h-24 flex justify-center items-center"
                 >
                     <Image
@@ -46,7 +48,10 @@ export default function ProductItem({
                     />
                 </a>
                 <div className="flex flex-col gap-2">
-                    <a href="" className="font-monts text-base font-semibold">
+                    <a
+                        href={`/${url_key}`}
+                        className="font-monts text-base font-semibold"
+                    >
                         {name}
                     </a>
                     <p className="text-sm text-gray-400">SKU {sku}</p>

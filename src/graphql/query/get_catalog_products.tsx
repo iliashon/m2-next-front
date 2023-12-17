@@ -36,7 +36,7 @@ export async function getCatalogProducts() {
 
 export const GET_CATALOG_PRODUCTS = gql`
     query GetProduct {
-        products(filter: { category_id: { in: "47" } }) {
+        products(filter: { category_id: { in: "47" } }, pageSize: 18) {
             items {
                 name
                 description {

@@ -36,6 +36,7 @@ export async function addSimpleProductToCart(
                                         }
                                     }
                                 }
+                                url_key
                             }
                             quantity
                             prices {

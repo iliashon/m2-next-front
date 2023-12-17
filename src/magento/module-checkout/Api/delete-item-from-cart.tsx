@@ -31,6 +31,7 @@ export async function deleteProductFromCart(
                                         }
                                     }
                                 }
+                                url_key
                             }
                             quantity
                             prices {

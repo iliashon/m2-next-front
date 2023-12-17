@@ -16,6 +16,7 @@ export type TCartProduct = {
                 };
             };
         };
+        url_key: string;
     };
     quantity: number;
     prices: {
