@@ -1,6 +1,6 @@
 import React from "react";
 
-import { GetRecommendedProduct } from "@/graphql/query/get_recomended_products";
+import { GetRecommendedProduct } from "@/magento/module_widget/Api/get_recomended_products";
 import ProductCard from "@/magento/module-catalog/view/ProductCard";
 
 export default async function RecomendedProducts() {

@@ -3,7 +3,7 @@ import Image from "next/image";
 // Import icon cart
 import check from "@/assets/icons/check.svg";
 import cross from "@/assets/icons/cross.svg";
-import { IRecomendedProduct } from "@/graphql/query/get_recomended_products";
+import { IRecomendedProduct } from "@/magento/module_widget/Api/get_recomended_products";
 import AddToCartButton from "../components/AddToCartButton";
 import StockStatus from "../components/StockStatus";
 

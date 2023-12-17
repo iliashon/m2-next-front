@@ -1,6 +1,6 @@
 "use client";
 
-import { TStockStatus } from "@/graphql/query/get_catalog_products";
+import { TStockStatus } from "@/magento/module-catalog/Api/get_catalog_products";
 import useAddToCartSimpleProduct from "@/magento/module-product/hooks/useAddToCartSimpleProduct";
 import { ClipLoader } from "react-spinners";
 

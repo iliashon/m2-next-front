@@ -1,4 +1,4 @@
-import { GetCategories } from "@/graphql/query/get_categories";
+import { GetCategories } from "@/magento/module_widget/Api/get_categories";
 import Link from "next/link";
 import React from "react";
 

@@ -1,4 +1,4 @@
-import { TStockStatus } from "@/graphql/query/get_catalog_products";
+import { TStockStatus } from "@/magento/module-catalog/Api/get_catalog_products";
 import Image from "next/image";
 import React from "react";
 

@@ -7,7 +7,7 @@ import Image from "next/image";
 import search from "@/assets/icons/uil_search.svg";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_CATALOG_PRODUCTS } from "@/graphql/query/get_catalog_products";
+import { GET_CATALOG_PRODUCTS } from "@/magento/module-catalog/Api/get_catalog_products";
 import PriceFilter from "@/magento/module-catalog/components/PriceFilter/PriceFilter";
 import ProductCard from "@/magento/module-catalog/view/ProductCard";
 
