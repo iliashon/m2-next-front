@@ -1,8 +1,8 @@
 // "use client";
 
-import RecomendedProducts from "@/components/widgets/RecomendedProducts/RecomendedProducts";
-import Slider from "@/components/widgets/Slider/Slider";
-import TopCategories from "@/components/widgets/TopCategories/TopCategories";
+import RecomendedProducts from "@/magento/module_widget/view/RecomendedProducts/RecomendedProducts";
+import Slider from "@/magento/module_widget/view/Slider/Slider";
+import TopCategories from "@/magento/module_widget/view/TopCategories/TopCategories";
 
 export default function Home() {
     return (
