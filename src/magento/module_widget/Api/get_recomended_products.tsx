@@ -49,6 +49,13 @@ export async function GetRecommendedProduct() {
                                         value
                                         currency
                                     }
+                                    discount {
+                                        amount_off
+                                        percent_off
+                                    }
+                                    final_price {
+                                        value
+                                    }
                                 }
                             }
                             special_price
