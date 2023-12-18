@@ -6,6 +6,7 @@ import useDeleteProductFromCart from "../../hooks/useDeleteProductFromCart";
 import { ClipLoader } from "react-spinners";
 import PriceBoxCart from "../../components/PriceBoxCart/PriceBoxCart";
 import { TPriceRange } from "@/magento/Types/TPriceRange";
+import ChangeQuantityBox from "../../components/ChangeQuantityBox/ChangeQuantityBox";
 
 export default function ProductItem({
     image,
@@ -63,15 +64,7 @@ export default function ProductItem({
                 </div>
             </div>
             <div className="flex gap-8 items-center">
-                <div className="flex items-center gap-4">
-                    <button className="w-9 h-9 rounded-md bg-gray-300">
-                        -
-                    </button>
-                    <span className="text-xl font-semibold">{quantity}</span>
-                    <button className="w-9 h-9 rounded-md bg-gray-300">
-                        +
-                    </button>
-                </div>
+                <ChangeQuantityBox quantity={quantity} cartItemUid={uid} />
                 <div className="flex flex-col">
                     <span className="text-green-500 text-xl">
                         {price.maximum_price.final_price?.value * quantity}$

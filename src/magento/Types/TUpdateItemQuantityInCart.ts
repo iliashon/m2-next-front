@@ -1,8 +1,8 @@
 import { TCartPrices } from "./TCartPrices";
 import { TCartProduct } from "./TCartProduct";
 
-export type TDeleteProductFromCart = {
-    removeItemFromCart: {
+export type TUpdateItemQuantityInCart = {
+    updateCartItems: {
         cart: {
             id: string;
             items: TCartProduct[];
