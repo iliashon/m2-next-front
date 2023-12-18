@@ -1,5 +1,5 @@
+import { TPriceRange } from "@/magento/Types/TPriceRange";
 import React from "react";
-import { TPriceRange } from "../../Types/TSimpleProduct";
 
 export default function PriceBox({ price }: { price: TPriceRange }) {
     return (

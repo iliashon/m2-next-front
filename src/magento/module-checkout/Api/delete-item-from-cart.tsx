@@ -1,8 +1,5 @@
 import client from "@/apollo-client";
-import {
-    TAddToCartSimpleProduct,
-    TDeleteProductFromCart,
-} from "@/magento/module-product/Types/TCart";
+import { TDeleteProductFromCart } from "@/magento/Types/TDeleteProductFromCart";
 import { FetchResult, gql } from "@apollo/client";
 
 export async function deleteProductFromCart(
@@ -27,6 +24,13 @@ export async function deleteProductFromCart(
                                 price_range {
                                     maximum_price {
                                         regular_price {
+                                            value
+                                        }
+                                        discount {
+                                            amount_off
+                                            percent_off
+                                        }
+                                        final_price {
                                             value
                                         }
                                     }

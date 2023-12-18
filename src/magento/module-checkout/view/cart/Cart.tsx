@@ -1,18 +1,18 @@
 "use client";
 
 import ProductItem from "@/magento/module-checkout/view/cart/ProductItem";
-import { TProductsCart } from "@/magento/module-product/Types/TCart";
 import { useEffect, useState } from "react";
 import SummarizingItem from "../../components/SummarizingItem";
 import LoaderBoxItem from "../../components/LoaderBoxItem/LoaderBoxItem";
 import { Skeleton } from "@mui/material";
+import { TCart } from "@/magento/Types/TCart";
 
 const style = {
     baseFlex: "flex justify-between",
 };
 
 export default function Cart() {
-    const [cart, setCart] = useState<TProductsCart>();
+    const [cart, setCart] = useState<TCart>();
 
     const getCartInLocalStorage = () => {
         setCart(JSON.parse(localStorage.getItem("cart") || ""));

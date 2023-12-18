@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { deleteProductFromCart } from "../Api/delete-item-from-cart";
-import {
-    TAddToCartSimpleProduct,
-    TDeleteProductFromCart,
-    TProductsCart,
-} from "@/magento/module-product/Types/TCart";
+import { TCart } from "@/magento/Types/TCart";
+import { TDeleteProductFromCart } from "@/magento/Types/TDeleteProductFromCart";
 
 const CART_KEY_STORAGE = "cart";
 
@@ -14,7 +11,7 @@ export default function useDeleteProductFromCart() {
     async function deleteProduct(productUid: string) {
         setLoading(true);
 
-        const cart: TProductsCart = JSON.parse(
+        const cart: TCart = JSON.parse(
             localStorage.getItem(CART_KEY_STORAGE) || ""
         );
 

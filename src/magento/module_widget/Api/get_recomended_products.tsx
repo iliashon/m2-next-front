@@ -1,32 +1,13 @@
 import client from "@/apollo-client";
-import { TPriceRange } from "@/magento/module-product/Types/TSimpleProduct";
+import { TPriceRange } from "@/magento/Types/TPriceRange";
+import { TSimpleProduct } from "@/magento/Types/TSimpleProduct";
 import { ApolloQueryResult, gql } from "@apollo/client";
 
-export interface IRecomendedProduct {
-    name: string;
-    new: 1 | 0;
-    sale: 1 | 0;
-    url_key: string;
-    image: {
-        url: string;
-    };
-    short_description: {
-        html: string;
-    };
-    sku: string;
-    stock_status: "IN_STOCK" | "OUT_OF_STOCK";
-    price_range: TPriceRange;
-}
-
-export interface IRecomendedProducts {
-    products: {
-        items: IRecomendedProduct[];
-    };
-}
-
 export async function GetRecommendedProduct() {
-    const { data }: ApolloQueryResult<IRecomendedProducts> = await client.query(
-        {
+    const {
+        data,
+    }: ApolloQueryResult<{ products: { items: TSimpleProduct[] } }> =
+        await client.query({
             query: gql`
                 query GetRecommendedProduct {
                     products(filter: { category_id: { in: "41" } }) {
@@ -64,7 +45,6 @@ export async function GetRecommendedProduct() {
                 }
             `,
             fetchPolicy: "no-cache",
-        }
-    );
+        });
     return data;
 }

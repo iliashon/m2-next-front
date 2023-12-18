@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { addSimpleProductToCart } from "../Api/add-simple-product-to-cart";
 import { createNewEmptyCart } from "../Api/create-new-cart";
-import { TAddToCartSimpleProduct, TProductsCart } from "../Types/TCart";
+import { TAddToCartSimpleProduct } from "@/magento/Types/TAddToCartSimpleProduct";
+import { TCart } from "@/magento/Types/TCart";
 
 const CART_KEY_STORAGE = "cart";
 
 export default function useAddToCartSimpleProduct() {
     const [loading, setLoading] = useState(false);
 
-    async function addToCart(newItem: TNewItemInfoWithQuantity) {
+    async function addToCart(newItem: { sku: string; quantity: number }) {
         const { sku, quantity } = newItem;
 
         if (!localStorage.getItem(CART_KEY_STORAGE)) {
@@ -32,7 +33,7 @@ export default function useAddToCartSimpleProduct() {
         } else if (localStorage.getItem(CART_KEY_STORAGE)) {
             setLoading(true);
 
-            const cart: TProductsCart = JSON.parse(
+            const cart: TCart = JSON.parse(
                 localStorage.getItem(CART_KEY_STORAGE) || ""
             );
 

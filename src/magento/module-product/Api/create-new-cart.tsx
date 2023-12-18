@@ -1,9 +1,9 @@
 import client from "@/apollo-client";
 import { FetchResult, gql } from "@apollo/client";
-import { TNewCart } from "../Types/TCart";
+import { TNewEmptyCart } from "@/magento/Types/TNewEmptyCart";
 
 export async function createNewEmptyCart() {
-    const { data }: FetchResult<TNewCart> = await client.mutate({
+    const { data }: FetchResult<TNewEmptyCart> = await client.mutate({
         mutation: gql`
             mutation CreateCart {
                 createEmptyCart

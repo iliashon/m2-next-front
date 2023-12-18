@@ -12,6 +12,7 @@ import PriceFilter from "@/magento/module-catalog/components/PriceFilter/PriceFi
 import ProductCard from "@/magento/module-catalog/view/ProductCard";
 import { Pagination, Skeleton } from "@mui/material";
 import SkeletonCatalogLoader from "../components/SkeletonCatalogLoader/SkeletonCatalogLoader";
+import { TCatalogProducts } from "@/magento/Types/TCatalogProducts";
 
 export default function Catalog() {
     const [price, setPrice] = useState([135, 1256]);
@@ -27,7 +28,12 @@ export default function Catalog() {
         setPrice(newValue);
     };
 
-    const { loading, data, error } = useQuery(GET_CATALOG_PRODUCTS);
+    const { loading, data, error } = useQuery<TCatalogProducts>(
+        GET_CATALOG_PRODUCTS,
+        {
+            variables: { page_number: 2 },
+        }
+    );
 
     return (
         <>
@@ -74,7 +80,7 @@ export default function Catalog() {
                         {loading ? (
                             <SkeletonCatalogLoader />
                         ) : (
-                            data?.products.items.map((item: any) => {
+                            data?.products.items.map((item) => {
                                 return (
                                     <ProductCard key={item?.sku} data={item} />
                                 );
@@ -82,7 +88,7 @@ export default function Catalog() {
                         )}
                         <div className="w-full flex justify-center my-6">
                             <Pagination
-                                count={10}
+                                count={data?.products.page_info.total_pages}
                                 showFirstButton
                                 showLastButton
                             />

@@ -1,16 +1,6 @@
 import client from "@/apollo-client";
+import { ICategories } from "@/magento/Types/TCategories";
 import { ApolloQueryResult, gql } from "@apollo/client";
-
-interface ICategory {
-    name: string;
-    url_key: string;
-}
-
-export interface ICategories {
-    categories: {
-        items: ICategory[];
-    };
-}
 
 export async function GetCategories() {
     const { data }: ApolloQueryResult<ICategories> = await client.query({

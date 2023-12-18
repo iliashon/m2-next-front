@@ -15,7 +15,12 @@ const MIN_QUANTITY_VALUE = 1;
 export default function AddToCartBox({
     productInfo,
 }: {
-    productInfo: TNewItemInfo;
+    productInfo: {
+        name: string;
+        image: string;
+        sku: string;
+        price: number;
+    };
 }) {
     const { loading, addToCart } = useAddToCartSimpleProduct();
 

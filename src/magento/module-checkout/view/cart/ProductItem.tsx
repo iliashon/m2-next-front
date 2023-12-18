@@ -5,7 +5,7 @@ import trash from "@/assets/icons/heroiconsTrash.svg";
 import useDeleteProductFromCart from "../../hooks/useDeleteProductFromCart";
 import { ClipLoader } from "react-spinners";
 import PriceBoxCart from "../../components/PriceBoxCart/PriceBoxCart";
-import { TPriceRange } from "@/magento/module-product/Types/TSimpleProduct";
+import { TPriceRange } from "@/magento/Types/TPriceRange";
 
 export default function ProductItem({
     image,
@@ -74,7 +74,7 @@ export default function ProductItem({
                 </div>
                 <div className="flex flex-col">
                     <span className="text-green-500 text-xl">
-                        {price.maximum_price.final_price.value * quantity}$
+                        {price.maximum_price.final_price?.value * quantity}$
                     </span>
                     <span className="text-gray-400 text-sm">
                         {quantity} piece

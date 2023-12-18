@@ -1,4 +1,4 @@
-import { TProductsCart } from "@/magento/module-product/Types/TCart";
+import { TCart } from "@/magento/Types/TCart";
 import { useEffect, useState } from "react";
 
 export default function useCheckTotalQuantity() {
@@ -9,7 +9,7 @@ export default function useCheckTotalQuantity() {
             if (localStorage.getItem("cart")) {
                 const quantity = JSON.parse(
                     localStorage.getItem("cart") || ""
-                ) as TProductsCart;
+                ) as TCart;
                 setQuantity(quantity.total_quantity);
             }
         };

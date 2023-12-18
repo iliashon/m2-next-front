@@ -1,8 +1,8 @@
 "use client";
 
+import { TStockStatus } from "@/magento/Types/TStockStatus";
 import useAddToCartSimpleProduct from "@/magento/module-product/hooks/useAddToCartSimpleProduct";
 import { ClipLoader } from "react-spinners";
-import { TStockStatus } from "../Types/TSimpleProduct";
 
 export default function AddToCartButton({
     stock_status,

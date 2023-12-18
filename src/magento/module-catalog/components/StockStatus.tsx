@@ -3,7 +3,7 @@ import React from "react";
 
 import check from "@/assets/icons/check.svg";
 import cross from "@/assets/icons/cross.svg";
-import { TStockStatus } from "../Types/TSimpleProduct";
+import { TStockStatus } from "@/magento/Types/TStockStatus";
 
 export default function StockStatus({
     stock_status,

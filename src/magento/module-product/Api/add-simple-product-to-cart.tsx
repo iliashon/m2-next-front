@@ -1,6 +1,6 @@
 import client from "@/apollo-client";
+import { TAddToCartSimpleProduct } from "@/magento/Types/TAddToCartSimpleProduct";
 import { FetchResult, gql } from "@apollo/client";
-import { TAddToCartSimpleProduct } from "../Types/TCart";
 
 export async function addSimpleProductToCart(
     sku: string,
