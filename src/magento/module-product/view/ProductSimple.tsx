@@ -10,6 +10,7 @@ import Image from "next/image";
 import StockStatus from "@/magento/module-product/components/StockStatus/StockStatus";
 import Breadcrump from "@/components/Breadcrump/Breadcrump";
 import AddToCartBox from "../components/AddToCartBox/AddToCartBox";
+import PriceBox from "../components/PriceBox/PriceBox";
 
 export default async function ProductSimple({ url_key }: { url_key: string }) {
     const { name, description, image, sku, stock_status, price_range } = (
@@ -41,11 +42,7 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
                         ></div>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-3xl font-lato text-gr-green">
-                            <b>
-                                {price_range.maximum_price.regular_price.value}$
-                            </b>
-                        </span>
+                        <PriceBox price={price_range} />
                     </div>
                     <div className="flex gap-6">
                         <AddToCartBox

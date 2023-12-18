@@ -7,6 +7,7 @@ import { IRecomendedProduct } from "@/magento/module_widget/Api/get_recomended_p
 import AddToCartButton from "../components/AddToCartButton";
 import StockStatus from "../components/StockStatus";
 import Badges from "../components/Badges/Badges";
+import PriceBox from "@/magento/module-product/components/PriceBox/PriceBox";
 
 // Type props
 interface PropsIRecProduct {
@@ -30,15 +31,7 @@ export default function ProductCard(props: PropsIRecProduct) {
                 />
             </a>
             <div className="flex flex-col -mt-4">
-                <span className="text-gr-green text-2xl">
-                    <b>
-                        {
-                            props.data.price_range.maximum_price.regular_price
-                                .value
-                        }
-                        $
-                    </b>
-                </span>
+                <PriceBox price={props.data.price_range} />
                 <span className="text-xs text-gray-400">
                     SKU {props.data.sku}
                 </span>

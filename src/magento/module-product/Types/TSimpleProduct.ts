@@ -12,17 +12,25 @@ export type SimpleProduct = {
                 };
                 sku: string;
                 stock_status: TStockStatus;
-                price_range: {
-                    maximum_price: {
-                        regular_price: {
-                            value: number;
-                            currency: string;
-                        };
-                    };
-                };
+                price_range: TPriceRange;
             }
         ];
     };
 };
 
 export type TStockStatus = "IN_STOCK" | "OUT_OF_STOCK";
+
+export type TPriceRange = {
+    maximum_price: {
+        regular_price: {
+            value: number;
+        };
+        discount: {
+            amount_off: number;
+            percent_off: number;
+        };
+        final_price: {
+            value: number;
+        };
+    };
+};

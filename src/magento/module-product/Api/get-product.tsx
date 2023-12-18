@@ -22,7 +22,13 @@ export async function getSimpleProduct(url_key: string) {
                             maximum_price {
                                 regular_price {
                                     value
-                                    currency
+                                }
+                                discount {
+                                    amount_off
+                                    percent_off
+                                }
+                                final_price {
+                                    value
                                 }
                             }
                         }

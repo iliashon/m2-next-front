@@ -1,4 +1,5 @@
 import client from "@/apollo-client";
+import { TPriceRange } from "@/magento/module-product/Types/TSimpleProduct";
 import { ApolloQueryResult, gql } from "@apollo/client";
 
 export interface IRecomendedProduct {
@@ -14,14 +15,7 @@ export interface IRecomendedProduct {
     };
     sku: string;
     stock_status: "IN_STOCK" | "OUT_OF_STOCK";
-    price_range: {
-        maximum_price: {
-            regular_price: {
-                value: number;
-                currency: string;
-            };
-        };
-    };
+    price_range: TPriceRange;
 }
 
 export interface IRecomendedProducts {

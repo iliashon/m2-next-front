@@ -1,3 +1,5 @@
+import { TPriceRange } from "@/magento/module-product/Types/TSimpleProduct";
+
 type SimpleProduct = {
     products: {
         items: [
@@ -14,14 +16,7 @@ type SimpleProduct = {
                 };
                 sku: string;
                 stock_status: TStockStatus;
-                price_range: {
-                    maximum_price: {
-                        regular_price: {
-                            value: number;
-                            currency: string;
-                        };
-                    };
-                };
+                price_range: TPriceRange;
             }
         ];
     };

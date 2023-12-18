@@ -1,3 +1,5 @@
+import { TPriceRange } from "./TSimpleProduct";
+
 export type TNewCart = {
     createEmptyCart: string;
 };
@@ -9,13 +11,7 @@ export type TCartProduct = {
             url: string;
         };
         sku: string;
-        price_range: {
-            maximum_price: {
-                regular_price: {
-                    value: number;
-                };
-            };
-        };
+        price_range: TPriceRange;
         url_key: string;
     };
     quantity: number;

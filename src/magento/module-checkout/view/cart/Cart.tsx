@@ -37,10 +37,7 @@ export default function Cart() {
                                     sku={item.product.sku}
                                     quantity={item.quantity}
                                     image={item.product.image.url}
-                                    price={
-                                        item.product.price_range.maximum_price
-                                            .regular_price.value
-                                    }
+                                    price={item.product.price_range}
                                     uid={item.uid}
                                     url_key={item.product.url_key}
                                     key={item.product.sku}

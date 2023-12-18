@@ -34,6 +34,13 @@ export async function addSimpleProductToCart(
                                         regular_price {
                                             value
                                         }
+                                        discount {
+                                            amount_off
+                                            percent_off
+                                        }
+                                        final_price {
+                                            value
+                                        }
                                     }
                                 }
                                 url_key

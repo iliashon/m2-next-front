@@ -4,6 +4,8 @@ import Image from "next/image";
 import trash from "@/assets/icons/heroiconsTrash.svg";
 import useDeleteProductFromCart from "../../hooks/useDeleteProductFromCart";
 import { ClipLoader } from "react-spinners";
+import PriceBoxCart from "../../components/PriceBoxCart/PriceBoxCart";
+import { TPriceRange } from "@/magento/module-product/Types/TSimpleProduct";
 
 export default function ProductItem({
     image,
@@ -15,7 +17,7 @@ export default function ProductItem({
     url_key,
 }: {
     image: string;
-    price: number;
+    price: TPriceRange;
     name: string;
     quantity: number;
     sku: string;
@@ -53,7 +55,7 @@ export default function ProductItem({
                     </a>
                     <p className="text-sm text-gray-400">SKU {sku}</p>
                     <div className="flex gap-2 items-end">
-                        <span className="text-green-500 text-xl">{price}$</span>
+                        <PriceBoxCart price={price} />
                         <span className="text-gray-400 text-xs">
                             / unit price
                         </span>
@@ -72,7 +74,7 @@ export default function ProductItem({
                 </div>
                 <div className="flex flex-col">
                     <span className="text-green-500 text-xl">
-                        {price * quantity}$
+                        {price.maximum_price.final_price.value * quantity}$
                     </span>
                     <span className="text-gray-400 text-sm">
                         {quantity} piece
