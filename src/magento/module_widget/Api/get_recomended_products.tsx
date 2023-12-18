@@ -3,6 +3,8 @@ import { ApolloQueryResult, gql } from "@apollo/client";
 
 export interface IRecomendedProduct {
     name: string;
+    new: 1 | 0;
+    sale: 1 | 0;
     url_key: string;
     image: {
         url: string;
@@ -36,6 +38,8 @@ export async function GetRecommendedProduct() {
                     products(filter: { category_id: { in: "41" } }) {
                         items {
                             name
+                            sale
+                            new
                             url_key
                             image {
                                 url

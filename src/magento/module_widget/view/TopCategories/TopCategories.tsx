@@ -23,28 +23,28 @@ export default async function TopCategories() {
                     {data.categories.items[0].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].url_key}`}
+                    href={`/catalog/${data.categories.items[1].url_key}`}
                     className={`col-span-2 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].name}
+                    {data.categories.items[1].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].url_key}`}
+                    href={`/catalog/${data.categories.items[2].url_key}`}
                     className={`col-span-2 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].name}
+                    {data.categories.items[2].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].url_key}`}
+                    href={`/catalog/${data.categories.items[3].url_key}`}
                     className={`col-span-3 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].name}
+                    {data.categories.items[3].name}
                 </Link>
                 <Link
-                    href={`/catalog/${data.categories.items[0].url_key}`}
+                    href={`/catalog/${data.categories.items[4].url_key}`}
                     className={`col-span-3 ${style.categoryBlock}`}
                 >
-                    {data.categories.items[0].name}
+                    {data.categories.items[4].name}
                 </Link>
             </div>
         </section>

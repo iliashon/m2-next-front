@@ -6,6 +6,7 @@ import cross from "@/assets/icons/cross.svg";
 import { IRecomendedProduct } from "@/magento/module_widget/Api/get_recomended_products";
 import AddToCartButton from "../components/AddToCartButton";
 import StockStatus from "../components/StockStatus";
+import Badges from "../components/Badges/Badges";
 
 // Type props
 interface PropsIRecProduct {
@@ -22,7 +23,8 @@ export default function ProductCard(props: PropsIRecProduct) {
                 <Image
                     src={props.data.image.url}
                     alt=""
-                    className="h-full object-contain"
+                    className="h-auto w-auto object-contain"
+                    priority={true}
                     width={200}
                     height={200}
                 />
@@ -51,14 +53,7 @@ export default function ProductCard(props: PropsIRecProduct) {
                 />
                 <StockStatus stock_status={props.data.stock_status} />
             </div>
-            <div className="absolute text-xs top-3 right-3 flex gap-1">
-                <span className="bg-red-400 px-2 py-1 rounded-lg text-white">
-                    <b>sale</b>
-                </span>
-                <span className="bg-teal-700 px-2 py-1 rounded-lg text-white">
-                    <b>best seller</b>
-                </span>
-            </div>
+            <Badges newAtr={props.data.new} saleAtr={props.data.sale} />
         </div>
     );
 }

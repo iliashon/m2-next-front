@@ -1,9 +1,9 @@
-import { TStockStatus } from "@/magento/module-catalog/Api/get_catalog_products";
 import Image from "next/image";
 import React from "react";
 
 import check from "@/assets/icons/check.svg";
 import cross from "@/assets/icons/cross.svg";
+import { TStockStatus } from "../Types/TSimpleProduct";
 
 export default function StockStatus({
     stock_status,
@@ -24,6 +24,9 @@ export default function StockStatus({
             <Image
                 src={stock_status === "IN_STOCK" ? check : cross}
                 alt="Icons"
+                width={12}
+                height={24}
+                className="w-auto h-auto"
             />
         </div>
     );

@@ -5,10 +5,6 @@ import trash from "@/assets/icons/heroiconsTrash.svg";
 import useDeleteProductFromCart from "../../hooks/useDeleteProductFromCart";
 import { ClipLoader } from "react-spinners";
 
-const loaderProp = ({ src }: { src: string }) => {
-    return src;
-};
-
 export default function ProductItem({
     image,
     price,
@@ -42,9 +38,10 @@ export default function ProductItem({
                     <Image
                         src={image}
                         alt=""
+                        className="w-auto h-auto"
                         width={60}
                         height={80}
-                        loader={loaderProp}
+                        priority={true}
                     />
                 </a>
                 <div className="flex flex-col gap-2">
