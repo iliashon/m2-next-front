@@ -5,7 +5,7 @@ import Image from "next/image";
 
 // import icons
 import search from "@/assets/icons/uil_search.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CATALOG_PRODUCTS } from "@/magento/module-catalog/Api/get_catalog_products";
 import PriceFilter from "@/magento/module-catalog/components/PriceFilter/PriceFilter";
@@ -17,13 +17,21 @@ import { TCatalogProducts } from "@/magento/Types/TCatalogProducts";
 export default function Catalog() {
     const [price, setPrice] = useState([135, 1256]);
 
+    const [pageNumber, setPageNumber] = useState(1);
+
+    const handleChangePageNumber = (
+        event: React.ChangeEvent<unknown>,
+        value: number
+    ) => {
+        setPageNumber(value);
+    };
+
     const handleChangePriceSlider = (
         event: Event,
         newValue: number | number[]
     ) => {
         setPrice(newValue as number[]);
     };
-
     const handleChangePriceInput = (newValue: number[]) => {
         setPrice(newValue);
     };
@@ -31,7 +39,7 @@ export default function Catalog() {
     const { loading, data, error } = useQuery<TCatalogProducts>(
         GET_CATALOG_PRODUCTS,
         {
-            variables: { page_number: 2 },
+            variables: { page_number: pageNumber },
         }
     );
 
@@ -91,6 +99,7 @@ export default function Catalog() {
                                 count={data?.products.page_info.total_pages}
                                 showFirstButton
                                 showLastButton
+                                onChange={handleChangePageNumber}
                             />
                         </div>
                     </div>
