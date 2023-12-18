@@ -10,7 +10,7 @@ import { useQuery } from "@apollo/client";
 import { GET_CATALOG_PRODUCTS } from "@/magento/module-catalog/Api/get_catalog_products";
 import PriceFilter from "@/magento/module-catalog/components/PriceFilter/PriceFilter";
 import ProductCard from "@/magento/module-catalog/view/ProductCard";
-import { Skeleton } from "@mui/material";
+import { Pagination, Skeleton } from "@mui/material";
 import SkeletonCatalogLoader from "../components/SkeletonCatalogLoader/SkeletonCatalogLoader";
 
 export default function Catalog() {
@@ -80,6 +80,13 @@ export default function Catalog() {
                                 );
                             })
                         )}
+                        <div className="w-full flex justify-center my-6">
+                            <Pagination
+                                count={10}
+                                showFirstButton
+                                showLastButton
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

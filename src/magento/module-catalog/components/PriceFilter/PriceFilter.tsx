@@ -27,7 +27,7 @@ export default function PriceFilter({
                     color: "#52af77",
                 }}
             />
-            <div className="flex gap-12 justify-center">
+            <div className="flex justify-between">
                 <div className="flex flex-col">
                     <span>min</span>
                     <input
