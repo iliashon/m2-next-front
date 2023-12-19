@@ -18,6 +18,12 @@ export async function getSimpleProduct(url_key: string) {
                         image {
                             url
                         }
+                        media_gallery {
+                            disabled
+                            label
+                            position
+                            url
+                        }
                         sku
                         stock_status
                         price_range {

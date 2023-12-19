@@ -8,6 +8,12 @@ export type TSimpleProduct = {
     description: {
         html: string;
     };
+    media_gallery: {
+        disabled: boolean;
+        label: string;
+        position: number;
+        url: string;
+    }[];
     url_key: string;
     image: {
         url: string;

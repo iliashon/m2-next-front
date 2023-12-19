@@ -12,6 +12,7 @@ import Breadcrump from "@/components/Breadcrump/Breadcrump";
 import AddToCartBox from "../components/AddToCartBox/AddToCartBox";
 import PriceBox from "../components/PriceBox/PriceBox";
 import Badges from "@/magento/components/Badges/Badges";
+import ProductGallery from "../components/ProductGallery/ProductGallery";
 
 export default async function ProductSimple({ url_key }: { url_key: string }) {
     const data = (await getSimpleProduct(url_key)).products.items[0];
@@ -24,10 +25,7 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
                 <Breadcrump />
             </div>
             <div className="container mx-auto px-4 py-5 flex gap-10 font-monts">
-                <div className="w-2/5 flex justify-center items-center h-28rem bg-white rounded-xl relative">
-                    <Image src={image.url} alt="" width={300} height={300} />
-                    <Badges newAtr={data.new} saleAtr={data.sale} />
-                </div>
+                <ProductGallery data={data} />
                 <div className="w-3/5 flex flex-col gap-5">
                     <h1 className="text-3xl font-semibold">{name}</h1>
                     <div className="flex items-center gap-4 font-lato">
