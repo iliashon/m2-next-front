@@ -81,7 +81,7 @@ export default function Cart() {
                         </div>
                         <GrandTotalPrice cart={cart} />
                         <ProccedCheckoutButton cart={cart} />
-                        <PromoApply />
+                        <PromoApply cart={cart} />
                     </div>
                 </div>
             </div>

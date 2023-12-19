@@ -21,6 +21,9 @@ export async function addSimpleProductToCart(
                     }
                 ) {
                     cart {
+                        applied_coupons {
+                            code
+                        }
                         id
                         items {
                             product {

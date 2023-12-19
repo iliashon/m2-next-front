@@ -7,6 +7,10 @@ import { TUpdateItemQuantityInCart } from "../Types/TUpdateItemQuantityInCart";
 import { createNewEmptyCart } from "../module-product/Api/create-new-cart";
 import { addSimpleProductToCart } from "../module-product/Api/add-simple-product-to-cart";
 import { TAddToCartSimpleProduct } from "../Types/TAddToCartSimpleProduct";
+import { applyCouponToCart } from "../module-checkout/Api/apply-coupon-to-cart";
+import { TApplyCouponToCart } from "../Types/TApplyCouponToCart";
+import { removeCouponFromCart } from "../module-checkout/Api/remove-coupon-from-cart";
+import { TRemoveCouponFromCart } from "../Types/TRemoveCouponFromCart";
 
 const CART_KEY_STORAGE = "cart";
 
@@ -19,6 +23,35 @@ export default function useActionWithCart() {
         window.dispatchEvent(new Event("storage"));
 
         setLoading(false);
+    }
+
+    async function removeCoupon() {
+        setLoading(true);
+
+        const cart: TCart = JSON.parse(
+            localStorage.getItem(CART_KEY_STORAGE) || ""
+        );
+
+        const data = (await removeCouponFromCart(
+            cart.id
+        )) as TRemoveCouponFromCart;
+
+        setLocalStorage(JSON.stringify(data.removeCouponFromCart.cart));
+    }
+
+    async function applyCoupon(couponCode: string) {
+        setLoading(true);
+
+        const cart: TCart = JSON.parse(
+            localStorage.getItem(CART_KEY_STORAGE) || ""
+        );
+
+        const data = (await applyCouponToCart(
+            couponCode,
+            cart.id
+        )) as TApplyCouponToCart;
+
+        setLocalStorage(JSON.stringify(data.applyCouponToCart.cart));
     }
 
     async function deleteProduct(productUid: string) {
@@ -82,5 +115,12 @@ export default function useActionWithCart() {
         setLocalStorage(JSON.stringify(data.addSimpleProductsToCart.cart));
     }
 
-    return { loading, deleteProduct, updateItemInCart, addToCart };
+    return {
+        loading,
+        deleteProduct,
+        updateItemInCart,
+        addToCart,
+        applyCoupon,
+        removeCoupon,
+    };
 }

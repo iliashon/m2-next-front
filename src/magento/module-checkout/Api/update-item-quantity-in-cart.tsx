@@ -25,6 +25,9 @@ export async function updateQuantityInCart(
                         }
                     ) {
                         cart {
+                            applied_coupons {
+                                code
+                            }
                             id
                             items {
                                 product {

@@ -1,16 +1,16 @@
 import client from "@/apollo-client";
-import { TDeleteProductFromCart } from "@/magento/Types/TDeleteProductFromCart";
+import { TApplyCouponToCart } from "@/magento/Types/TApplyCouponToCart";
 import { FetchResult, gql } from "@apollo/client";
 
-export async function deleteProductFromCart(
-    cartItemUid: string,
-    cartId: string
-) {
-    const { data }: FetchResult<TDeleteProductFromCart> = await client.mutate({
+export async function applyCouponToCart(coupon_code: string, cartId: string) {
+    const { data }: FetchResult<TApplyCouponToCart> = await client.mutate({
         mutation: gql`
-            mutation DeleteProductFromCart($cartItemUid: ID, $cartId: String!) {
-                removeItemFromCart(
-                    input: { cart_id: $cartId, cart_item_uid: $cartItemUid }
+            mutation ApplyCouponToCart(
+                $coupon_code: String!
+                $cartId: String!
+            ) {
+                applyCouponToCart(
+                    input: { cart_id: $cartId, coupon_code: $coupon_code }
                 ) {
                     cart {
                         applied_coupons {
@@ -68,7 +68,7 @@ export async function deleteProductFromCart(
             }
         `,
         variables: {
-            cartItemUid,
+            coupon_code,
             cartId,
         },
     });
