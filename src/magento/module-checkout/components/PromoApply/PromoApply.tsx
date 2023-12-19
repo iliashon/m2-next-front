@@ -25,8 +25,6 @@ export default function PromoApply({
         removeCoupon();
     };
 
-    console.log(error);
-
     return (
         <div className="flex flex-col gap-3">
             <h4 className="text-base font-semibold">Discount code:</h4>
