@@ -1,4 +1,4 @@
-import Breadcrump from "@/components/Breadcrump/Breadcrump";
+import Breadcrump from "@/magento/components/Breadcrump/Breadcrump";
 import ProductSimple from "@/magento/module-product/view/ProductSimple";
 
 export default async function Product({

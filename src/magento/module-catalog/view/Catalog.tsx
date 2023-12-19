@@ -1,6 +1,6 @@
 "use client";
 
-import Breadcrump from "@/components/Breadcrump/Breadcrump";
+import Breadcrump from "@/magento/components/Breadcrump/Breadcrump";
 import Image from "next/image";
 
 // import icons

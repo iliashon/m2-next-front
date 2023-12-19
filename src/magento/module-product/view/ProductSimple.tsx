@@ -8,7 +8,7 @@ import { getSimpleProduct } from "../Api/get-product";
 // -----------------------------
 import Image from "next/image";
 import StockStatus from "@/magento/module-product/components/StockStatus/StockStatus";
-import Breadcrump from "@/components/Breadcrump/Breadcrump";
+import Breadcrump from "@/magento/components/Breadcrump/Breadcrump";
 import AddToCartBox from "../components/AddToCartBox/AddToCartBox";
 import PriceBox from "../components/PriceBox/PriceBox";
 import Badges from "@/magento/components/Badges/Badges";
