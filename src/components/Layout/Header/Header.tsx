@@ -5,14 +5,18 @@ import Link from "next/link";
 
 // Import icons
 import user from "@/assets/icons/user.png";
-import cart from "@/assets/icons/cart.png";
+import cartWhite from "@/assets/icons/cart.png";
+import cartGreen from "@/assets/icons/cart-green.png";
 
 // Import header logo
 import logo from "@/assets/images/logo-header.png";
 import useCheckTotalQuantity from "@/hooks/useCheckTotalQuantity";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
     const quantity = useCheckTotalQuantity();
+
+    const pathname = usePathname();
 
     return (
         <header className="container mx-auto px-4 flex justify-between items-center h-24">
@@ -23,6 +27,7 @@ export default function Header() {
                     </a>
                 </div>
                 <div className="flex gap-6 items-center font-monts">
+                    <Link href="/">Home</Link>
                     <Link href="/catalog">Catalog</Link>
                 </div>
             </div>
@@ -45,9 +50,16 @@ export default function Header() {
                     </button>
                     <a
                         href="/cart"
-                        className="flex items-center justify-center h-11 w-11 bg-gr-bg-gray rounded-full relative"
+                        className={`${
+                            pathname === "/cart"
+                                ? "bg-gr-green"
+                                : "bg-gr-bg-gray"
+                        } flex items-center justify-center h-11 w-11 rounded-full relative`}
                     >
-                        <Image src={cart} alt="Cart" />
+                        <Image
+                            src={pathname === "/cart" ? cartWhite : cartGreen}
+                            alt="Cart"
+                        />
                         <span className="absolute -top-1 -right-1 w-5 h-5 bg-gr-green flex justify-center items-center rounded-full text-white text-xs">
                             {quantity}
                         </span>
