@@ -9,6 +9,8 @@ export async function getSimpleProduct(url_key: string) {
                 products(filter: { url_key: { in: $url_key } }) {
                     items {
                         name
+                        sale
+                        new
                         description {
                             html
                         }

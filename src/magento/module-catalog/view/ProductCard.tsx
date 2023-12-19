@@ -3,9 +3,9 @@ import Image from "next/image";
 // Import icon cart
 import AddToCartButton from "../components/AddToCartButton";
 import StockStatus from "../components/StockStatus";
-import Badges from "../components/Badges/Badges";
 import PriceBox from "@/magento/module-product/components/PriceBox/PriceBox";
 import { TSimpleProduct } from "@/magento/Types/TSimpleProduct";
+import Badges from "@/magento/components/Badges/Badges";
 
 export default function ProductCard({ data }: { data: TSimpleProduct }) {
     return (

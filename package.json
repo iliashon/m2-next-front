@@ -24,6 +24,7 @@
     "swiper": "^11.0.5"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.23.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
