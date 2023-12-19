@@ -1,11 +1,11 @@
 import { TCartPrices } from "./TCartPrices";
-import { TCartSimpleProduct } from "./TCartSimpleProduct";
+import { TCartProduct } from "./TCartProduct";
 
 export type TAddToCartSimpleProduct = {
     addSimpleProductsToCart: {
         cart: {
             id: string;
-            items: TCartSimpleProduct[];
+            items: TCartProduct[];
             total_quantity: number;
             prices: TCartPrices;
         };

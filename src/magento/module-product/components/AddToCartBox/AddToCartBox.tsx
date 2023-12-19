@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import useAddToCartSimpleProduct from "../../hooks/useAddToCartSimpleProduct";
 import { ClipLoader } from "react-spinners";
+import useActionWithCart from "@/magento/hooks/useActionWithCart";
 
 const style = {
     button: "w-9 h-9 rounded-md bg-gray-300",
@@ -22,7 +22,7 @@ export default function AddToCartBox({
         price: number;
     };
 }) {
-    const { loading, addToCart } = useAddToCartSimpleProduct();
+    const { loading, addToCart } = useActionWithCart();
 
     const [quantity, setQuantity] = useState(1);
 

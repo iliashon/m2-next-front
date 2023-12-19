@@ -16,7 +16,6 @@ export default function Cart() {
 
     const getCartInLocalStorage = () => {
         setCart(JSON.parse(localStorage.getItem("cart") || ""));
-        console.log("Reload");
     };
 
     useEffect(() => {

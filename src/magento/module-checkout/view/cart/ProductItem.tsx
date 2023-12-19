@@ -2,11 +2,11 @@ import Image from "next/image";
 
 // Import icons
 import trash from "@/assets/icons/heroiconsTrash.svg";
-import useDeleteProductFromCart from "../../hooks/useDeleteProductFromCart";
 import { ClipLoader } from "react-spinners";
 import PriceBoxCart from "../../components/PriceBoxCart/PriceBoxCart";
 import { TPriceRange } from "@/magento/Types/TPriceRange";
 import ChangeQuantityBox from "../../components/ChangeQuantityBox/ChangeQuantityBox";
+import useActionWithCart from "@/magento/hooks/useActionWithCart";
 
 export default function ProductItem({
     image,
@@ -25,7 +25,7 @@ export default function ProductItem({
     uid: string;
     url_key: string;
 }) {
-    const { loading, deleteProduct } = useDeleteProductFromCart();
+    const { loading, deleteProduct } = useActionWithCart();
 
     const deleteProductHandle = () => {
         deleteProduct(uid);

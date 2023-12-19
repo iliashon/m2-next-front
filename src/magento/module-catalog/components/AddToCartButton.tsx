@@ -1,7 +1,7 @@
 "use client";
 
 import { TStockStatus } from "@/magento/Types/TStockStatus";
-import useAddToCartSimpleProduct from "@/magento/module-product/hooks/useAddToCartSimpleProduct";
+import useActionWithCart from "@/magento/hooks/useActionWithCart";
 import { ClipLoader } from "react-spinners";
 
 export default function AddToCartButton({
@@ -11,7 +11,7 @@ export default function AddToCartButton({
     stock_status: TStockStatus;
     sku: string;
 }) {
-    const { loading, addToCart } = useAddToCartSimpleProduct();
+    const { loading, addToCart } = useActionWithCart();
 
     const addToCartHandle = () => {
         addToCart({

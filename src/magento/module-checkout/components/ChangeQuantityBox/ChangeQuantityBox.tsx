@@ -1,5 +1,5 @@
 import { ClipLoader } from "react-spinners";
-import useUpdateProductQuantityFromCart from "../../hooks/useUpdateProductQuantityFromCart";
+import useActionWithCart from "@/magento/hooks/useActionWithCart";
 
 const style = {
     button: "w-9 h-9 rounded-md bg-gray-300",
@@ -14,7 +14,7 @@ export default function ChangeQuantityBox({
     quantity: number;
     cartItemUid: string;
 }) {
-    const { loading, updateItemInCart } = useUpdateProductQuantityFromCart();
+    const { loading, updateItemInCart } = useActionWithCart();
 
     const handleChangeQuantityPlus = () => {
         updateItemInCart(cartItemUid, quantity + 1);
