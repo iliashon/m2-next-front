@@ -51,7 +51,13 @@ export default function useActionWithCart() {
             cart.id
         )) as TApplyCouponToCart;
 
-        setLocalStorage(JSON.stringify(data.applyCouponToCart.cart));
+        if (data.applyCouponToCart) {
+            setLocalStorage(JSON.stringify(data?.applyCouponToCart.cart));
+            return false;
+        } else {
+            setLoading(false);
+            return true;
+        }
     }
 
     async function deleteProduct(productUid: string) {
