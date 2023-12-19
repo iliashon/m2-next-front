@@ -1,7 +1,7 @@
 import { TPriceRange } from "@/magento/Types/TPriceRange";
 import React from "react";
 
-export default function PriceBoxCart({ price }: { price: TPriceRange }) {
+export default function PriceBoxCartItem({ price }: { price: TPriceRange }) {
     return (
         <>
             {price.maximum_price.discount.amount_off > 0 ? (
