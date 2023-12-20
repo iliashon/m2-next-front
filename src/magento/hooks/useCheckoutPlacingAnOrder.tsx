@@ -66,11 +66,11 @@ export default function useCheckoutPlacingAnOrder() {
             shippingInfo
         )) as TSetShippingAddress;
 
-        console.log(response);
-
         setLocalStorage(
             JSON.stringify(response.setShippingAddressesOnCart.cart)
         );
+
+        return true;
     }
 
     return { loading, setShipping, getCountriesData };

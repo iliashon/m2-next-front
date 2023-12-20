@@ -25,8 +25,6 @@ export async function setShippingAddress({
     street: string;
     telephone: string;
 }) {
-    console.log(country_code);
-
     const { data }: FetchResult<TSetShippingAddress> = await client.mutate({
         mutation: gql`
             mutation SetShippingAddress(

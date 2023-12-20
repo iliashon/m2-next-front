@@ -1,6 +1,8 @@
 "use client";
 
 import { TCart } from "@/magento/Types/TCart";
+import { Button } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 export default function ProccedCheckoutButton({
@@ -9,17 +11,24 @@ export default function ProccedCheckoutButton({
     cart: TCart | null | undefined;
 }) {
     return (
-        <button
-            disabled={
-                cart === null ||
-                cart?.total_quantity === 0 ||
-                cart === undefined
-                    ? true
-                    : false
-            }
-            className="bg-gr-green w-full h-9 rounded-md text-white font-monts"
-        >
-            Proceed to Checkout
-        </button>
+        <>
+            {cart === null ||
+            cart?.total_quantity === 0 ||
+            cart === undefined ? (
+                <button
+                    disabled
+                    className="bg-gr-green w-full h-9 rounded-md text-white font-monts"
+                >
+                    Proceed to Checkout
+                </button>
+            ) : (
+                <Link
+                    href={"/cart/checkout"}
+                    className="bg-gr-green w-full h-9 flex justify-center items-center rounded-md text-white font-monts"
+                >
+                    Proceed to Checkout
+                </Link>
+            )}
+        </>
     );
 }

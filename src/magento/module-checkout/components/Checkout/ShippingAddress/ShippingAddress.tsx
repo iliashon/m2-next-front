@@ -36,15 +36,13 @@ export default function ShippingAddress({
         mode: "onBlur",
     });
 
-    const submit: SubmitHandler<TShippingAddress> = (data) => {
+    const submit: SubmitHandler<TShippingAddress> = async (data) => {
         const activeCountry = countries.filter(
             (item) => item.full_name_english === data.country
         );
         data.country_code = activeCountry[0].id;
 
-        console.log(data);
-
-        setShipping(data);
+        const result = await setShipping(data);
     };
 
     useEffect(() => {

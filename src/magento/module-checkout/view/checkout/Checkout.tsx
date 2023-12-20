@@ -6,6 +6,7 @@ import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { TCountry } from "@/magento/Types/checkout/TCountries";
 import useCheckoutPlacingAnOrder from "@/magento/hooks/useCheckoutPlacingAnOrder";
 import { ClipLoader } from "react-spinners";
+import ShippingMethods from "../../components/Checkout/ShippingMethods/ShippingMethods";
 
 export default function Checkout() {
     const [countries, setCountries] = useState<TCountry[]>();
@@ -27,7 +28,7 @@ export default function Checkout() {
                 <h2 className="my-5 text-3xl font-lato">Checkout</h2>
                 <div className="flex justify-between">
                     <div className="w-3/5 font-monts">
-                        <Accordion expanded={true}>
+                        <Accordion>
                             <AccordionSummary>
                                 Shipping Address
                             </AccordionSummary>
@@ -50,7 +51,7 @@ export default function Checkout() {
                                 Shipping Methods
                             </AccordionSummary>
                             <AccordionDetails>
-                                Shipping Methods
+                                <ShippingMethods />
                             </AccordionDetails>
                         </Accordion>
                         <Accordion>
