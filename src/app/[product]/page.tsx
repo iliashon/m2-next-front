@@ -14,7 +14,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function Product({
+export default async function page({
     params,
 }: {
     params: { product: string };

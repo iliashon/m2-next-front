@@ -31,7 +31,7 @@ export default function Cart() {
     }, []);
 
     return (
-        <section className="bg-gr-bg-gray">
+        <section className="bg-gr-bg-gray cart-section">
             <div className="container mx-auto p-4 flex gap-8">
                 <div className="w-8/12 py-5 flex flex-col gap-4">
                     {cart ? (
