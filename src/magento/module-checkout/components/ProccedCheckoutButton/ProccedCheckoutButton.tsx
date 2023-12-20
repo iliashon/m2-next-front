@@ -1,3 +1,5 @@
+"use client";
+
 import { TCart } from "@/magento/Types/TCart";
 import React from "react";
 

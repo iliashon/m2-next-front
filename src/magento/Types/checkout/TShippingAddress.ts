@@ -1,4 +1,5 @@
-export type TShippingAddres = {
+export type TShippingAddress = {
+    country_code: string;
     email: string;
     firstName: string;
     lastName: string;

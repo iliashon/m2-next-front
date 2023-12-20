@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { getCountries } from "../module-checkout/Api/get-countries";
+import { TShippingAddress } from "../Types/checkout/TShippingAddress";
+import { TCart } from "../Types/TCart";
+import { TSetShippingAddress } from "../Types/checkout/TCartShippingAddress";
+import { setShippingAddress } from "../module-checkout/Api/setShippingAddress";
 
 const CART_KEY_STORAGE = "cart";
 
@@ -24,7 +28,50 @@ export default function useCheckoutPlacingAnOrder() {
         return data;
     }
 
-    async function setShippingAddress() {}
+    async function setShipping(data: TShippingAddress) {
+        setLoading(true);
 
-    return { loading, setShippingAddress, getCountriesData };
+        const {
+            email,
+            firstName,
+            lastName,
+            city,
+            company,
+            country,
+            streetAddres,
+            phoneNumber,
+            postalCode,
+            province,
+            country_code,
+        } = data;
+
+        const cart: TCart = JSON.parse(
+            localStorage.getItem(CART_KEY_STORAGE) || ""
+        );
+
+        const shippingInfo = {
+            cartId: cart.id,
+            city,
+            company,
+            country_code,
+            firstname: firstName,
+            lastname: lastName,
+            postcode: postalCode,
+            region: province,
+            street: streetAddres,
+            telephone: phoneNumber,
+        };
+
+        const response = (await setShippingAddress(
+            shippingInfo
+        )) as TSetShippingAddress;
+
+        console.log(response);
+
+        setLocalStorage(
+            JSON.stringify(response.setShippingAddressesOnCart.cart)
+        );
+    }
+
+    return { loading, setShipping, getCountriesData };
 }

@@ -1,11 +1,12 @@
 "use client";
 
 import { TCountry } from "@/magento/Types/checkout/TCountries";
-import { TShippingAddres } from "@/magento/Types/checkout/TShippingAddress";
+import { TShippingAddress } from "@/magento/Types/checkout/TShippingAddress";
 import useCheckoutPlacingAnOrder from "@/magento/hooks/useCheckoutPlacingAnOrder";
 import { Alert, Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { ClipLoader } from "react-spinners";
 
 const style = {
     nextBtn:
@@ -23,19 +24,27 @@ export default function ShippingAddress({
 }) {
     const [region, setRegion] = useState<TCountry[]>();
 
-    const { loading, getCountriesData } = useCheckoutPlacingAnOrder();
+    const { loading, getCountriesData, setShipping } =
+        useCheckoutPlacingAnOrder();
 
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
-    } = useForm<TShippingAddres>({
+    } = useForm<TShippingAddress>({
         mode: "onBlur",
     });
 
-    const submit: SubmitHandler<TShippingAddres> = (data) => {
+    const submit: SubmitHandler<TShippingAddress> = (data) => {
+        const activeCountry = countries.filter(
+            (item) => item.full_name_english === data.country
+        );
+        data.country_code = activeCountry[0].id;
+
         console.log(data);
+
+        setShipping(data);
     };
 
     useEffect(() => {
@@ -168,19 +177,7 @@ export default function ShippingAddress({
                             className={style.section}
                             {...register("country")}
                         >
-                            {countries?.map((item, index) => {
-                                if (index === 0) {
-                                    return (
-                                        <>
-                                            <option key={index} selected>
-                                                Countries
-                                            </option>
-                                            <option key={item.id}>
-                                                {item.full_name_english}
-                                            </option>
-                                        </>
-                                    );
-                                }
+                            {countries?.map((item) => {
                                 return (
                                     <option key={item.id}>
                                         {item.full_name_english}
@@ -217,7 +214,11 @@ export default function ShippingAddress({
                                 })}
                             </select>
                         ) : (
-                            <input type="text" className={style.input} />
+                            <input
+                                type="text"
+                                {...register("province")}
+                                className={style.input}
+                            />
                         )
                     ) : (
                         <Skeleton
@@ -292,7 +293,12 @@ export default function ShippingAddress({
                         </Alert>
                     )}
                 </label>
-                <button className={style.nextBtn}>Next</button>
+                <button
+                    className={style.nextBtn}
+                    disabled={loading ? true : false}
+                >
+                    {loading ? <ClipLoader color="white" size={25} /> : "Next"}
+                </button>
             </form>
         </div>
     );
