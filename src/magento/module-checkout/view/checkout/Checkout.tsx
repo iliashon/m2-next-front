@@ -28,40 +28,19 @@ export default function Checkout() {
                 <h2 className="my-5 text-3xl font-lato">Checkout</h2>
                 <div className="flex justify-between">
                     <div className="w-3/5 font-monts">
-                        <Accordion>
-                            <AccordionSummary>
-                                Shipping Address
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                {countries ? (
-                                    <ShippingAddress countries={countries} />
-                                ) : (
-                                    <div className="h-32 text-center">
-                                        <ClipLoader
-                                            color="black"
-                                            size={30}
-                                            className="mt-10"
-                                        />
-                                    </div>
-                                )}
-                            </AccordionDetails>
-                        </Accordion>
-                        <Accordion>
-                            <AccordionSummary>
-                                Shipping Methods
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <ShippingMethods />
-                            </AccordionDetails>
-                        </Accordion>
-                        <Accordion>
-                            <AccordionSummary>Billing Address</AccordionSummary>
-                            <AccordionDetails>Billing Address</AccordionDetails>
-                        </Accordion>
-                        <Accordion>
-                            <AccordionSummary>Payment Method</AccordionSummary>
-                            <AccordionDetails>Payment Method</AccordionDetails>
-                        </Accordion>
+                        {countries ? (
+                            <ShippingAddress countries={countries} />
+                        ) : (
+                            <div className="h-32 text-center">
+                                <ClipLoader
+                                    color="black"
+                                    size={30}
+                                    className="mt-10"
+                                />
+                            </div>
+                        )}
+
+                        <ShippingMethods />
                     </div>
                     <div className="w-1/3">
                         <h2>Summarizing</h2>
