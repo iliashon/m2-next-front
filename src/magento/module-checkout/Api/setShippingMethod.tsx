@@ -1,8 +1,5 @@
 import client from "@/apollo-client";
-import {
-    TSetShippingAddress,
-    TSetShippingMethod,
-} from "@/magento/Types/checkout/TCartShippingAddress";
+import { TSetShippingMethod } from "@/magento/Types/checkout/TCartShippingAddress";
 import { FetchResult, gql } from "@apollo/client";
 
 export async function setShippingMethod({

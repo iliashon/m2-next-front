@@ -33,7 +33,14 @@ export default function PromoApply({
                     onChange={(event) => setValue(event.target.value)}
                     className="bg-gray-200 w-3/4 rounded-md p-2 h-9 box-border"
                     type="text"
-                    disabled={cart?.applied_coupons ? true : false}
+                    disabled={
+                        cart?.applied_coupons ||
+                        cart === null ||
+                        cart?.total_quantity === 0 ||
+                        cart === undefined
+                            ? true
+                            : false
+                    }
                     value={
                         cart?.applied_coupons
                             ? cart.applied_coupons[0].code
@@ -43,9 +50,22 @@ export default function PromoApply({
                 />
                 <button
                     onClick={cart?.applied_coupons ? deleteCoupon : sendCoupon}
-                    disabled={loading ? true : false}
+                    disabled={
+                        loading ||
+                        cart === null ||
+                        cart?.total_quantity === 0 ||
+                        cart === undefined
+                            ? true
+                            : false
+                    }
                     className={`${
                         cart?.applied_coupons ? "bg-red-500" : "bg-gr-green"
+                    } ${
+                        cart === null ||
+                        cart?.total_quantity === 0 ||
+                        cart === undefined
+                            ? "opacity-50"
+                            : ""
                     } w-1/5 h-9 rounded-md text-white flex justify-center items-center font-monts text-sm`}
                 >
                     {loading ? (

@@ -17,7 +17,7 @@ export default function ProccedCheckoutButton({
             cart === undefined ? (
                 <button
                     disabled
-                    className="bg-gr-green w-full h-9 rounded-md text-white font-monts"
+                    className="bg-gr-green opacity-50 w-full h-9 rounded-md text-white font-monts"
                 >
                     Proceed to Checkout
                 </button>
