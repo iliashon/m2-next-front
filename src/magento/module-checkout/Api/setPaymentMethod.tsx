@@ -1,63 +1,45 @@
 import client from "@/apollo-client";
-import { TSetShippingAddress } from "@/magento/Types/checkout/TCartShippingAddress";
+import { TSetPaymentMethod } from "@/magento/Types/checkout/TCartShippingAddress";
 import { FetchResult, gql } from "@apollo/client";
 
-export async function setShippingAddress({
+export async function setPaymentMethod({
     cartId,
-    city,
-    company,
-    country_code,
-    firstname,
-    lastname,
-    postcode,
-    region,
-    street,
-    telephone,
+    payment_method_code,
 }: {
     cartId: string;
-    city: string;
-    company: string;
-    country_code: string;
-    firstname: string;
-    lastname: string;
-    postcode: string;
-    region: string;
-    street: string;
-    telephone: string;
+    payment_method_code: string;
 }) {
-    const { data }: FetchResult<TSetShippingAddress> = await client.mutate({
+    const { data }: FetchResult<TSetPaymentMethod> = await client.mutate({
         mutation: gql`
-            mutation SetShippingAddress(
+            mutation SetPaymentMethod(
                 $cartId: String!
-                $city: String!
-                $company: String
-                $country_code: String!
-                $firstname: String!
-                $lastname: String!
-                $postcode: String
-                $region: String
-                $street: [String]!
-                $telephone: String
+                $payment_method_code: String!
             ) {
-                setShippingAddressesOnCart(
+                setPaymentMethodOnCart(
                     input: {
                         cart_id: $cartId
-                        shipping_addresses: {
-                            address: {
-                                city: $city
-                                company: $company
-                                country_code: $country_code
-                                firstname: $firstname
-                                lastname: $lastname
-                                postcode: $postcode
-                                region: $region
-                                street: $street
-                                telephone: $telephone
-                            }
-                        }
+                        payment_method: { code: $payment_method_code }
                     }
                 ) {
                     cart {
+                        selected_payment_method {
+                            code
+                            purchase_order_number
+                            title
+                        }
+                        billing_address {
+                            firstname
+                            lastname
+                            street
+                            telephone
+                            postcode
+                            city
+                            company
+                            country {
+                                label
+                                code
+                            }
+                        }
                         email
                         applied_coupons {
                             code
@@ -145,15 +127,7 @@ export async function setShippingAddress({
         `,
         variables: {
             cartId,
-            city,
-            company,
-            country_code,
-            firstname,
-            lastname,
-            postcode,
-            region,
-            street,
-            telephone,
+            payment_method_code,
         },
     });
     return data;

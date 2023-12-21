@@ -1,61 +1,19 @@
 import client from "@/apollo-client";
-import { TSetShippingAddress } from "@/magento/Types/checkout/TCartShippingAddress";
+import { TSetGuestEmailOnCart } from "@/magento/Types/checkout/TCartShippingAddress";
 import { FetchResult, gql } from "@apollo/client";
 
-export async function setShippingAddress({
+export async function setGuestEmailOnCart({
     cartId,
-    city,
-    company,
-    country_code,
-    firstname,
-    lastname,
-    postcode,
-    region,
-    street,
-    telephone,
+    email,
 }: {
     cartId: string;
-    city: string;
-    company: string;
-    country_code: string;
-    firstname: string;
-    lastname: string;
-    postcode: string;
-    region: string;
-    street: string;
-    telephone: string;
+    email: string;
 }) {
-    const { data }: FetchResult<TSetShippingAddress> = await client.mutate({
+    const { data }: FetchResult<TSetGuestEmailOnCart> = await client.mutate({
         mutation: gql`
-            mutation SetShippingAddress(
-                $cartId: String!
-                $city: String!
-                $company: String
-                $country_code: String!
-                $firstname: String!
-                $lastname: String!
-                $postcode: String
-                $region: String
-                $street: [String]!
-                $telephone: String
-            ) {
-                setShippingAddressesOnCart(
-                    input: {
-                        cart_id: $cartId
-                        shipping_addresses: {
-                            address: {
-                                city: $city
-                                company: $company
-                                country_code: $country_code
-                                firstname: $firstname
-                                lastname: $lastname
-                                postcode: $postcode
-                                region: $region
-                                street: $street
-                                telephone: $telephone
-                            }
-                        }
-                    }
+            mutation SetGuestEmailOnCart($cartId: String!, $email: String!) {
+                setGuestEmailOnCart(
+                    input: { cart_id: $cartId, email: $email }
                 ) {
                     cart {
                         email
@@ -145,15 +103,7 @@ export async function setShippingAddress({
         `,
         variables: {
             cartId,
-            city,
-            company,
-            country_code,
-            firstname,
-            lastname,
-            postcode,
-            region,
-            street,
-            telephone,
+            email,
         },
     });
     return data;

@@ -3,11 +3,19 @@ import { getCountries } from "../module-checkout/Api/get-countries";
 import { TShippingAddress } from "../Types/checkout/TShippingAddress";
 import { TCart } from "../Types/TCart";
 import {
+    TPlaceOrder,
+    TSetBillingAddress,
+    TSetGuestEmailOnCart,
+    TSetPaymentMethod,
     TSetShippingAddress,
     TSetShippingMethod,
 } from "../Types/checkout/TCartShippingAddress";
 import { setShippingAddress } from "../module-checkout/Api/setShippingAddress";
 import { setShippingMethod } from "../module-checkout/Api/setShippingMethod";
+import { setGuestEmailOnCart } from "../module-checkout/Api/setGuestEmailOnCart";
+import { setBillingAddress } from "../module-checkout/Api/setBillingAddress";
+import { setPaymentMethod } from "../module-checkout/Api/setPaymentMethod";
+import { placeOrder } from "../module-checkout/Api/placeOrder";
 
 const CART_KEY_STORAGE = "cart";
 
@@ -30,6 +38,42 @@ export default function useCheckoutPlacingAnOrder() {
         setLoading(false);
 
         return data;
+    }
+
+    async function placeOrderPost(payment_method_code: string) {
+        setLoading(true);
+
+        const cart: TCart = JSON.parse(
+            localStorage.getItem(CART_KEY_STORAGE) || ""
+        );
+
+        const resBilling = (await setBillingAddress({
+            cartId: cart.id,
+            sameAsShipping: true,
+        })) as TSetBillingAddress;
+
+        localStorage.setItem(
+            CART_KEY_STORAGE,
+            JSON.stringify(resBilling.setBillingAddressOnCart.cart)
+        );
+
+        const resPaymentMethod = (await setPaymentMethod({
+            cartId: cart.id,
+            payment_method_code,
+        })) as TSetPaymentMethod;
+
+        localStorage.setItem(
+            CART_KEY_STORAGE,
+            JSON.stringify(resPaymentMethod.setPaymentMethodOnCart.cart)
+        );
+
+        const resPlaceOrder = (await placeOrder({
+            cartId: cart.id,
+        })) as TPlaceOrder;
+
+        setLoading(false);
+
+        return resPlaceOrder;
     }
 
     async function setShippingMethodPost(
@@ -87,6 +131,16 @@ export default function useCheckoutPlacingAnOrder() {
             telephone: phoneNumber,
         };
 
+        const resEmail = (await setGuestEmailOnCart({
+            cartId: cart.id,
+            email: email,
+        })) as TSetGuestEmailOnCart;
+
+        localStorage.setItem(
+            CART_KEY_STORAGE,
+            JSON.stringify(resEmail.setGuestEmailOnCart.cart)
+        );
+
         const response = (await setShippingAddress(
             shippingInfo
         )) as TSetShippingAddress;
@@ -98,5 +152,11 @@ export default function useCheckoutPlacingAnOrder() {
         return true;
     }
 
-    return { loading, setShipping, getCountriesData, setShippingMethodPost };
+    return {
+        loading,
+        setShipping,
+        getCountriesData,
+        setShippingMethodPost,
+        placeOrderPost,
+    };
 }

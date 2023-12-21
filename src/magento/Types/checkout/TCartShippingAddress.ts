@@ -36,9 +36,33 @@ export type TSetShippingAddress = {
     };
 };
 
+export type TSetGuestEmailOnCart = {
+    setGuestEmailOnCart: {
+        cart: TCart;
+    };
+};
+
+export type TSetBillingAddress = {
+    setBillingAddressOnCart: {
+        cart: TCart;
+    };
+};
+
+export type TSetPaymentMethod = {
+    setPaymentMethodOnCart: {
+        cart: TCart;
+    };
+};
+
 export type TSetShippingMethod = {
     setShippingMethodsOnCart: {
         cart: TCart;
+    };
+};
+
+export type TPlaceOrder = {
+    order: {
+        order_number: string;
     };
 };
 

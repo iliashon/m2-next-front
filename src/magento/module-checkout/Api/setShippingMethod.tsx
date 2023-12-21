@@ -31,6 +31,10 @@ export async function setShippingMethod({
                     }
                 ) {
                     cart {
+                        available_payment_methods {
+                            title
+                            code
+                        }
                         applied_coupons {
                             code
                         }

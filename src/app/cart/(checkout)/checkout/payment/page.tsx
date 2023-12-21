@@ -1,5 +1,10 @@
+import PaymentMethod from "@/magento/module-checkout/components/Checkout/PaymentMethod/PaymentMethod";
 import React from "react";
 
 export default function page() {
-    return <div>Paymant</div>;
+    return (
+        <>
+            <PaymentMethod />
+        </>
+    );
 }
