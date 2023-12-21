@@ -27,7 +27,7 @@ export default function Checkout() {
             <div className="container mx-auto p-4">
                 <h2 className="my-5 text-3xl font-lato">Checkout</h2>
                 <div className="flex justify-between">
-                    <div className="w-3/5 font-monts">
+                    <div className="w-3/5 font-monts flex flex-col gap-3">
                         {countries ? (
                             <ShippingAddress countries={countries} />
                         ) : (
@@ -39,8 +39,6 @@ export default function Checkout() {
                                 />
                             </div>
                         )}
-
-                        <ShippingMethods />
                     </div>
                     <div className="w-1/3">
                         <h2>Summarizing</h2>

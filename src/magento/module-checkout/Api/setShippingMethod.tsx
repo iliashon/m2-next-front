@@ -1,59 +1,32 @@
 import client from "@/apollo-client";
-import { TSetShippingAddress } from "@/magento/Types/checkout/TCartShippingAddress";
+import {
+    TSetShippingAddress,
+    TSetShippingMethod,
+} from "@/magento/Types/checkout/TCartShippingAddress";
 import { FetchResult, gql } from "@apollo/client";
 
-export async function setShippingAddress({
+export async function setShippingMethod({
     cartId,
-    city,
-    company,
-    country_code,
-    firstname,
-    lastname,
-    postcode,
-    region,
-    street,
-    telephone,
+    carrier_code,
+    method_code,
 }: {
     cartId: string;
-    city: string;
-    company: string;
-    country_code: string;
-    firstname: string;
-    lastname: string;
-    postcode: string;
-    region: string;
-    street: string;
-    telephone: string;
+    carrier_code: string;
+    method_code: string;
 }) {
-    const { data }: FetchResult<TSetShippingAddress> = await client.mutate({
+    const { data }: FetchResult<TSetShippingMethod> = await client.mutate({
         mutation: gql`
-            mutation SetShippingAddress(
+            mutation SetShippingMethod(
                 $cartId: String!
-                $city: String!
-                $company: String
-                $country_code: String!
-                $firstname: String!
-                $lastname: String!
-                $postcode: String
-                $region: String
-                $street: [String]!
-                $telephone: String
+                $carrier_code: String!
+                $method_code: String!
             ) {
-                setShippingAddressesOnCart(
+                setShippingMethodsOnCart(
                     input: {
                         cart_id: $cartId
-                        shipping_addresses: {
-                            address: {
-                                city: $city
-                                company: $company
-                                country_code: $country_code
-                                firstname: $firstname
-                                lastname: $lastname
-                                postcode: $postcode
-                                region: $region
-                                street: $street
-                                telephone: $telephone
-                            }
+                        shipping_methods: {
+                            carrier_code: $carrier_code
+                            method_code: $method_code
                         }
                     }
                 ) {
@@ -72,6 +45,21 @@ export async function setShippingAddress({
                             country {
                                 label
                                 code
+                            }
+                            selected_shipping_method {
+                                amount {
+                                    value
+                                }
+                                carrier_code
+                                carrier_title
+                                method_code
+                                method_title
+                                price_excl_tax {
+                                    value
+                                }
+                                price_incl_tax {
+                                    value
+                                }
                             }
                             available_shipping_methods {
                                 amount {
@@ -144,15 +132,8 @@ export async function setShippingAddress({
         `,
         variables: {
             cartId,
-            city,
-            company,
-            country_code,
-            firstname,
-            lastname,
-            postcode,
-            region,
-            street,
-            telephone,
+            carrier_code,
+            method_code,
         },
     });
     return data;

@@ -2,8 +2,12 @@ import { useState } from "react";
 import { getCountries } from "../module-checkout/Api/get-countries";
 import { TShippingAddress } from "../Types/checkout/TShippingAddress";
 import { TCart } from "../Types/TCart";
-import { TSetShippingAddress } from "../Types/checkout/TCartShippingAddress";
+import {
+    TSetShippingAddress,
+    TSetShippingMethod,
+} from "../Types/checkout/TCartShippingAddress";
 import { setShippingAddress } from "../module-checkout/Api/setShippingAddress";
+import { setShippingMethod } from "../module-checkout/Api/setShippingMethod";
 
 const CART_KEY_STORAGE = "cart";
 
@@ -26,6 +30,27 @@ export default function useCheckoutPlacingAnOrder() {
         setLoading(false);
 
         return data;
+    }
+
+    async function setShippingMethodPost(
+        method_code: string,
+        carrier_code: string
+    ) {
+        setLoading(true);
+
+        const cart: TCart = JSON.parse(
+            localStorage.getItem(CART_KEY_STORAGE) || ""
+        );
+
+        const response = (await setShippingMethod({
+            cartId: cart.id,
+            carrier_code: carrier_code,
+            method_code: method_code,
+        })) as TSetShippingMethod;
+
+        setLocalStorage(JSON.stringify(response.setShippingMethodsOnCart.cart));
+
+        return true;
     }
 
     async function setShipping(data: TShippingAddress) {
@@ -73,5 +98,5 @@ export default function useCheckoutPlacingAnOrder() {
         return true;
     }
 
-    return { loading, setShipping, getCountriesData };
+    return { loading, setShipping, getCountriesData, setShippingMethodPost };
 }

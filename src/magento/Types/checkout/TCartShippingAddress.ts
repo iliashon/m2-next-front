@@ -12,11 +12,32 @@ export type TCartShippingAddress = {
         label: string;
         code: string;
     };
+    selected_shipping_method: {
+        amount: {
+            value: number;
+        };
+        carrier_code: string;
+        carrier_title: string;
+        method_code: string;
+        method_title: string;
+        price_excl_tax: {
+            value: number;
+        };
+        price_incl_tax: {
+            value: number;
+        };
+    };
     available_shipping_methods: TAvailableShippingMethods[];
 };
 
 export type TSetShippingAddress = {
     setShippingAddressesOnCart: {
+        cart: TCart;
+    };
+};
+
+export type TSetShippingMethod = {
+    setShippingMethodsOnCart: {
         cart: TCart;
     };
 };
