@@ -4,9 +4,8 @@ import ProductItem from "@/magento/module-checkout/view/cart/ProductItem";
 import { useEffect, useState } from "react";
 import SummarizingItem from "../../components/SummarizingItem/SummarizingItem";
 import LoaderBoxItem from "../../components/LoaderBoxItem/LoaderBoxItem";
-import { Skeleton } from "@mui/material";
+import { Alert, Skeleton, Snackbar } from "@mui/material";
 import { TCart } from "@/magento/Types/TCart";
-import Link from "next/link";
 import CartEmpty from "../../components/CartEmpty/CartEmpty";
 import PromoApply from "../../components/PromoApply/PromoApply";
 import ProccedCheckoutButton from "../../components/ProccedCheckoutButton/ProccedCheckoutButton";
@@ -15,6 +14,8 @@ import PriceWithoutDiscount from "../../components/PriceWithoutDiscount/PriceWit
 
 export default function Cart() {
     const [cart, setCart] = useState<TCart | null>();
+
+    const [isCompliteOrder, setIsCompliteOrder] = useState<boolean>(false);
 
     const getCartInLocalStorage = () => {
         if (localStorage.getItem("cart")) {
@@ -27,6 +28,14 @@ export default function Cart() {
     useEffect(() => {
         getCartInLocalStorage();
 
+        if (localStorage.getItem("order")) {
+            setIsCompliteOrder(true);
+            window.dispatchEvent(new Event("storage"));
+            setTimeout(() => {
+                setIsCompliteOrder(false);
+                localStorage.removeItem("order");
+            }, 5000);
+        }
         window.addEventListener("storage", () => getCartInLocalStorage());
     }, []);
 
@@ -85,6 +94,9 @@ export default function Cart() {
                     </div>
                 </div>
             </div>
+            <Snackbar open={isCompliteOrder}>
+                <Alert severity="success">Your order has been placed</Alert>
+            </Snackbar>
         </section>
     );
 }

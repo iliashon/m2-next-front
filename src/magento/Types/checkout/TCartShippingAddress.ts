@@ -61,8 +61,10 @@ export type TSetShippingMethod = {
 };
 
 export type TPlaceOrder = {
-    order: {
-        order_number: string;
+    placeOrder: {
+        order: {
+            order_number: string;
+        };
     };
 };
 

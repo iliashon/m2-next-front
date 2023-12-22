@@ -21,7 +21,8 @@ export default function PaymentMethod() {
         const result = await placeOrderPost(data.method);
 
         if (result) {
-            console.log(result);
+            localStorage.removeItem("cart");
+            router.replace("/cart");
         }
     };
 

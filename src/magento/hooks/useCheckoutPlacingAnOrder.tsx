@@ -71,9 +71,16 @@ export default function useCheckoutPlacingAnOrder() {
             cartId: cart.id,
         })) as TPlaceOrder;
 
+        localStorage.setItem(
+            "order",
+            JSON.stringify(resPlaceOrder.placeOrder.order.order_number)
+        );
+
+        window.dispatchEvent(new Event("storage"));
+
         setLoading(false);
 
-        return resPlaceOrder;
+        return true;
     }
 
     async function setShippingMethodPost(

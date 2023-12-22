@@ -11,6 +11,8 @@ export default function useCheckTotalQuantity() {
                     localStorage.getItem("cart") || ""
                 ) as TCart;
                 setQuantity(quantity.total_quantity);
+            } else {
+                setQuantity(0);
             }
         };
 
