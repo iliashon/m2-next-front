@@ -20,7 +20,7 @@ export default function ProductCard({ data }: { data: TSimpleProduct }) {
                     height={200}
                 />
             </a>
-            <div className="flex flex-col -mt-4">
+            <div className="flex flex-col -mt-4 gap-1">
                 <PriceBox price={data.price_range} />
                 <span className="text-xs text-gray-400">SKU {data.sku}</span>
                 <a href={`/${data.url_key}`} className="text-base">

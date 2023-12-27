@@ -76,8 +76,6 @@ export default function useCheckoutPlacingAnOrder() {
             JSON.stringify(resPlaceOrder.placeOrder.order.order_number)
         );
 
-        window.dispatchEvent(new Event("storage"));
-
         setLoading(false);
 
         return true;

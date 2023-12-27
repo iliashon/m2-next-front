@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import useActionWithCart from "@/magento/hooks/useActionWithCart";
+import { TStockStatus } from "@/magento/Types/TStockStatus";
 
 const style = {
     button: "w-9 h-9 rounded-md bg-gray-300",
@@ -16,6 +17,7 @@ export default function AddToCartBox({
     productInfo,
 }: {
     productInfo: {
+        stock_status: TStockStatus;
         name: string;
         image: string;
         sku: string;
@@ -27,12 +29,18 @@ export default function AddToCartBox({
     const [quantity, setQuantity] = useState(1);
 
     const quantityPlus = () => {
-        if (quantity < MAX_QUANTITY_VALUE) {
+        if (
+            quantity < MAX_QUANTITY_VALUE &&
+            productInfo.stock_status === "IN_STOCK"
+        ) {
             setQuantity(quantity + 1);
         }
     };
     const quantityMinus = () => {
-        if (quantity > MIN_QUANTITY_VALUE) {
+        if (
+            quantity > MIN_QUANTITY_VALUE &&
+            productInfo.stock_status === "IN_STOCK"
+        ) {
             setQuantity(quantity - 1);
         }
     };
@@ -59,15 +67,25 @@ export default function AddToCartBox({
                 <button
                     onClick={quantityPlus}
                     className={`${style.button} ${
-                        quantity === 99 ? "opacity-50" : "opacity-100"
+                        quantity === 99 ||
+                        productInfo.stock_status === "OUT_OF_STOCK"
+                            ? "opacity-50"
+                            : "opacity-100"
                     }`}
                 >
                     +
                 </button>
             </div>
             <button
+                disabled={
+                    productInfo.stock_status === "OUT_OF_STOCK" ? true : false
+                }
                 onClick={addToCartHandle}
-                className="bg-gr-green w-44 h-9 rounded-md text-white font-monts flex justify-center items-center"
+                className={`${
+                    productInfo.stock_status === "OUT_OF_STOCK"
+                        ? "opacity-50"
+                        : ""
+                } bg-gr-green w-44 h-9 rounded-md text-white font-monts flex justify-center items-center`}
             >
                 {loading ? (
                     <ClipLoader color="white" size={25} />

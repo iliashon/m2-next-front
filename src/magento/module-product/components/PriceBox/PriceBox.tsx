@@ -5,11 +5,11 @@ export default function PriceBox({ price }: { price: TPriceRange }) {
     return (
         <>
             {price.maximum_price.discount.amount_off > 0 ? (
-                <div className="flex flex-col font-lato">
+                <div className="flex gap-2 items-end font-lato">
                     <span className="text-gray-400">
                         <s>{price.maximum_price.regular_price.value}$</s>
                     </span>
-                    <span className="text-red-500 text-2xl font-semibold">
+                    <span className="text-red-500 text-3xl font-semibold">
                         {price.maximum_price.final_price.value}$
                     </span>
                 </div>

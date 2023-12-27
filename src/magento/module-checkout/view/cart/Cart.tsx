@@ -11,6 +11,7 @@ import PromoApply from "../../components/PromoApply/PromoApply";
 import ProccedCheckoutButton from "../../components/ProccedCheckoutButton/ProccedCheckoutButton";
 import GrandTotalPrice from "../../components/GrandTotalPrice/GrandTotalPrice";
 import PriceWithoutDiscount from "../../components/PriceWithoutDiscount/PriceWithoutDiscount";
+import { RedirectType, permanentRedirect, redirect } from "next/navigation";
 
 export default function Cart() {
     const [cart, setCart] = useState<TCart | null>();
@@ -30,12 +31,12 @@ export default function Cart() {
 
         if (localStorage.getItem("order")) {
             setIsCompliteOrder(true);
-            window.dispatchEvent(new Event("storage"));
             setTimeout(() => {
                 setIsCompliteOrder(false);
                 localStorage.removeItem("order");
             }, 5000);
         }
+
         window.addEventListener("storage", () => getCartInLocalStorage());
     }, []);
 

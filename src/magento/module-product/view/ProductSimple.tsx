@@ -50,6 +50,7 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
                                 sku,
                                 price: price_range.maximum_price.regular_price
                                     .value,
+                                stock_status,
                             }}
                         />
                     </div>

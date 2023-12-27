@@ -1,4 +1,3 @@
-import Breadcrump from "@/magento/components/Breadcrump/Breadcrump";
 import { getSimpleProduct } from "@/magento/module-product/Api/get-product";
 import ProductSimple from "@/magento/module-product/view/ProductSimple";
 
