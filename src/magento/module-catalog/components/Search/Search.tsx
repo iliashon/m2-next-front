@@ -4,9 +4,14 @@ import Image from "next/image";
 import searchIcon from "@/assets/icons/uil_search.svg";
 import { useState } from "react";
 import { useQueryState } from "next-usequerystate";
+import { useSearchParams } from "next/navigation";
 
 export default function Search({}: {}) {
-    const [search, setSearch] = useState<string>("");
+    const params = useSearchParams();
+
+    const [search, setSearch] = useState<string>(
+        params.has("search") ? (params.get("search") as string) : ""
+    );
 
     const [value, setValue] = useQueryState("search", {
         history: "push",

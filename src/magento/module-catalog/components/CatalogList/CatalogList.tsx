@@ -7,7 +7,7 @@ import { TCatalogProducts } from "@/magento/Types/TCatalogProducts";
 import { useQuery } from "@apollo/client";
 import { GET_CATALOG_PRODUCTS } from "../../Api/get_catalog_products";
 
-export default function CatalogList() {
+export default function CatalogList({ cat_uid }: { cat_uid?: string }) {
     const [pageNumber, setPageNumber] = useState(1);
 
     const [totalPageCount, setTotalPageCount] = useState<number>(1);
@@ -27,6 +27,7 @@ export default function CatalogList() {
             variables: {
                 page_number: pageNumber,
                 search: urlParams.get("search"),
+                cat_uid: cat_uid ? cat_uid : "NDc=",
             },
         }
     );

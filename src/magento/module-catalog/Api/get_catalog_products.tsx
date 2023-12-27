@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
 export const GET_CATALOG_PRODUCTS = gql`
-    query GetProduct($page_number: Int, $search: String) {
+    query GetProduct($page_number: Int, $search: String, $cat_uid: [String]) {
         products(
-            filter: { category_id: { in: "47" } }
+            filter: { category_uid: { in: $cat_uid } }
             search: $search
             pageSize: 18
             currentPage: $page_number
