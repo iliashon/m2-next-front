@@ -1,5 +1,3 @@
-"use client";
-
 import Search from "../components/Search/Search";
 import Filters from "../components/Filters/Filters";
 import CatalogList from "../components/CatalogList/CatalogList";

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import SkeletonCatalogLoader from "../SkeletonCatalogLoader/SkeletonCatalogLoader";
 import ProductCard from "../../view/ProductCard";
@@ -18,6 +20,9 @@ export default function CatalogList({ cat_uid }: { cat_uid?: string }) {
         event: React.ChangeEvent<unknown>,
         value: number
     ) => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
         setPageNumber(value);
     };
 
@@ -34,6 +39,9 @@ export default function CatalogList({ cat_uid }: { cat_uid?: string }) {
 
     useEffect(() => {
         if (!loading) {
+            if (data?.products.page_info.total_pages !== totalPageCount) {
+                setPageNumber(1);
+            }
             setTotalPageCount(data?.products.page_info.total_pages as number);
         }
     }, [data?.products.page_info.total_pages, loading]);
@@ -50,6 +58,7 @@ export default function CatalogList({ cat_uid }: { cat_uid?: string }) {
             <div className="w-full flex justify-center my-6">
                 <Pagination
                     count={totalPageCount}
+                    page={pageNumber}
                     showFirstButton
                     showLastButton
                     onChange={handleChangePageNumber}
