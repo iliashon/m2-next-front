@@ -7,7 +7,6 @@ import { getSimpleProduct } from "../Api/get-product";
 // Import components
 // -----------------------------
 import StockStatus from "@/magento/module-product/components/StockStatus/StockStatus";
-import Breadcrump from "@/magento/components/Breadcrump/Breadcrump";
 import AddToCartBox from "../components/AddToCartBox/AddToCartBox";
 import PriceBox from "../components/PriceBox/PriceBox";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
@@ -19,9 +18,7 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
 
     return (
         <section className="bg-gr-bg-gray pb-24">
-            <div className="container mx-auto p-4 font-lato">
-                <Breadcrump />
-            </div>
+            <div className="container mx-auto p-4 font-lato"></div>
             <div className="container mx-auto px-4 py-5 flex gap-10 font-monts">
                 <ProductGallery data={data} />
                 <div className="w-3/5 flex flex-col gap-5">
