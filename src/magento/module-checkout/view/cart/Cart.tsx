@@ -11,7 +11,6 @@ import PromoApply from "../../components/PromoApply/PromoApply";
 import ProccedCheckoutButton from "../../components/ProccedCheckoutButton/ProccedCheckoutButton";
 import GrandTotalPrice from "../../components/GrandTotalPrice/GrandTotalPrice";
 import PriceWithoutDiscount from "../../components/PriceWithoutDiscount/PriceWithoutDiscount";
-import { RedirectType, permanentRedirect, redirect } from "next/navigation";
 
 export default function Cart() {
     const [cart, setCart] = useState<TCart | null>();

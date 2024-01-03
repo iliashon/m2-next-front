@@ -18,7 +18,7 @@ export default function Catalog({
                     <Search />
                 </div>
             </section>
-            <section className="bg-gr-bg-gray py-6">
+            <section className="bg-gr-bg-gray py-6 catalog-section">
                 <div className="container mx-auto flex gap-5 px-4 items-start">
                     <Filters />
                     <CatalogList cat_uid={category_data?.uid} />

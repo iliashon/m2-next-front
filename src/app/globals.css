@@ -8,8 +8,15 @@
 }
 
 .cart-section,
-.checkout-section {
+.checkout-section,
+.catalog-section,
+.product-section {
     min-height: calc(100vh - 336px);
+}
+
+.product-section ul {
+    list-style: disc;
+    margin-left: 20px;
 }
 
 @media screen and (max-width: 1050px) {

@@ -10,6 +10,7 @@ import StockStatus from "@/magento/module-product/components/StockStatus/StockSt
 import AddToCartBox from "../components/AddToCartBox/AddToCartBox";
 import PriceBox from "../components/PriceBox/PriceBox";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
+import TabsPanel from "../components/Tabs/TabPanel";
 
 export default async function ProductSimple({ url_key }: { url_key: string }) {
     const data = (await getSimpleProduct(url_key)).products.items[0];
@@ -17,8 +18,7 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
     const { name, description, image, sku, stock_status, price_range } = data;
 
     return (
-        <section className="bg-gr-bg-gray pb-24">
-            <div className="container mx-auto p-4 font-lato"></div>
+        <section className="bg-gr-bg-gray pt-5 product-section">
             <div className="container mx-auto px-4 py-5 flex gap-10 font-monts">
                 <ProductGallery data={data} />
                 <div className="w-3/5 flex flex-col gap-5">
@@ -53,6 +53,9 @@ export default async function ProductSimple({ url_key }: { url_key: string }) {
                     </div>
                 </div>
             </div>
+            {/* <div className="container mx-auto p-4 font-lato">
+                <TabsPanel />
+            </div> */}
         </section>
     );
 }
